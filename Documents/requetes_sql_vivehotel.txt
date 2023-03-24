@@ -1,0 +1,54 @@
+1.	Liste des hôtels avec le nombre de chambres actives.
+select hot_id, count(cha_id) nbChambresActives from hotel, chambre 
+where cha_hotel= hot_id and cha_statut="occupée"
+ group by hot_id order by nbChambresActives desc; 
+
+
+2.	Liste des chambres triée par hôtel.
+select cha_id,cha_nom, hot_nom from chambre, hotel 
+where cha_hotel=hot_id 
+group by cha_id order by hot_id; 
+
+
+3.	Liste des réservations avec leurs durées (en jours) triées par hôtel, par date de début et par statut.
+select res_id, res_chambre,res_hotel,res_client,da
+
+4.	Liste des réservations entre 2 dates données pour un hôtel donné.
+select * from reservation,hotel 
+where hot_id=5 and  not (res_date_fin_sejour<"2022-12-24" or res_date_debut_sejour>"2022-12-31"); 
+
+
+5.	Nombre de réservations entre 2 dates données par hôtel.
+select hot_id, count(res_id) from reservation,hotel 
+where res_hotel=hot_id and not (res_date_fin_sejour<"2022-12-24" or res_date_debut_sejour>"2022-12-31");
+group by hot_id; 
+
+6.	Nombre d’hôtels par catégorie d’hôtel.
+select sta_libelle, count(hot_id) from standing, hotel 
+where hot_standing= sta_id 
+group by sta_libelle;
+
+7.	Nombre de chambres par catégorie de chambre.
+select cat_libelle, count(cha_id) from chambre, categorie
+where cha_categorie=cat_id 
+group by cat_libelle;
+
+8.	Requête donnant la durée (en nombre d’heures) d’une location.
+
+9.	Liste les chambres libres entre deux dates données pour un hôtel donné. 
+
+
+10.	Calcul du prix d’une réservation hors services.
+
+11.	Calcul des services consommés par client.
+
+12.	Liste des services, avec pour chacun le nombre d’hôtels qui le proposent.
+
+
+13.	Chiffre d’affaire annuel par hôtel (hors services).
+14.	Chiffre d’affaire annuel du groupe (hors services).
+15.	Chiffre d’affaire annuel des services par hôtel 
+16.	Chiffre d’affaire annuel des services pour le groupe
+17.	Calcul du chiffre d’affaire journalier maximum théorique (hôtel plein).
+
+

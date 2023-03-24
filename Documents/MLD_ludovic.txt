@@ -1,0 +1,95 @@
+<MLD>
+hotel
+o	id (PK)
+o	hot_nom varchar(50)
+o	hot_tel int
+o	hot_adresse varchar(200)
+o	hot_longitude int
+o	hot_latitude int
+o	hot_photo varchar(500)
+o	hot_descriptif varchar(500)
+o	hot_statut varchar(50)
+o	hot_standing (FK)
+
+standing
+o	sta_id (PK)
+o	sta_libelle varchar(100)
+
+chambre
+o	cha_id (PK)
+o	cha_nom varchar(50)
+o	cha_photo varchar(500)
+o	cha_descriptif varchar(5000)
+o	cha_statue varchar(50)
+o	cha_surface int
+o	cha_type_lit varchar(100)
+o	cha_jacuzzi bool
+o	cha_balcon bool
+o	cha_wifi bool
+o	cha_mini bar bool
+o	cha_coffre bool
+o	cha_avec_vue bool
+o	cha_categorie (FK)
+o	cha_hotel (FK)
+
+catégorie
+o	cat_id (PK)
+o	cat_libelle varchar(100)
+
+individu
+o	ind_id (PK)
+o	ind_nom varchar(100)
+o	ind_prenom varchar(100)
+o	ind_login varchar(200)
+o	ind_pwd warchar(500)
+o	ind_profil (FK)o	
+o	ind_hotel (FK)
+
+profil
+o	pro_id (PK)
+o	pro_libelle varchar(50)
+
+
+client
+o	cli_id (PK)
+o	cli_nom varchar(100)
+o	cli_prenom varchar(100)
+o	cli_login varchar(200)
+o	cli_pwd varchar(500)
+o	cli_profil (FK)
+
+réservation
+o	res_id (PK)
+o	res_date_creation date
+o	res_date_maj date
+o	res_date_début_séjour datetime
+o	res_date_fin_séjour datetime
+o	res_prix_total int
+o	res_état varchar(50)
+o	res_client (FK)
+o	res_hotel (FK)
+o	res_chambre (FK)
+
+
+service
+o	ser_id (PK)
+o	ser_libelle varchar(100)
+
+donner_acces
+o	don_id (PK)
+o	don_réservation (FK)
+o	don_service (FK)
+o	don_quantité int
+
+Proposer_service (prestation)
+o	pre_id (PK)
+o	pre_service (FK)
+o	pre_hotel (FK)
+o	pre_tarif int
+
+tarifer 
+o	tar_id (PK)
+o	tar_standing   (FK)
+o	tar_catégorie (FK)
+o	tar_prix int 
+</MLD>

@@ -1,0 +1,12 @@
+realiser: client 1,N ; réservation 0,1
+lier: hotel 0,N ; réservation 1,1
+prendre: chambre 1,N ; réservation 1,1
+donner_acces: réservation 1,N ; service 0,N
+gerer: individu 1,1 ; hotel 1,N
+proposer: service 1,N ; hotel 0,N
+avoir:individu 1,1 ; profil 1,N
+etre: client 1,1 ; profil 1,N
+appartenir: chambre 1,1 ; hotel 10,N
+standing: stending 1,1 ; hotel 1,N
+catégoriser: catégorie 1,N ; chambre 1,1
+tarifer: standing 1,N ; catégorie 1,N 

@@ -1,0 +1,123 @@
+<MCD>
+<entité>
+hotel
+o	id (AI)
+o	nom varchar(50)
+o	téléphone int
+o	adresse varchar(200)
+o	longitude int
+o	latitude int
+o	photo varchar(500)
+o	descriptif varchar(500)
+o	statut varchar(50)
+
+standing
+o	id (AI)
+o	libelle varchar(100)
+
+chambre
+o	id (AI)
+o	nom varchar(50)
+o	photo varchar(500)
+o	descriptif varchar(5000)
+o	statue varchar(50)
+o	surface int
+o	type de lit varchar(100)
+o	jacuzzi bool
+o	balcon bool
+o	wifi bool
+o	mini bar bool
+o	coffre bool
+o	avec vue bool
+
+catégorie
+o	id (AI)
+o	libelle varchar(100)
+
+individu
+o	id (AI)
+o	nom varchar(100)
+o	prenom varchar(100)
+o	login varchar(100)
+o	pwd warchar(500)
+
+profil
+o	id (AI)
+o	libelle varchar(50)
+
+client
+o	id (AI)
+o	nom varchar(100)
+o	prenom varchar(100)
+o	login varchar(100)
+o	pwd varchar(500)
+
+
+
+réservation
+o	id (AI)
+o	date_création date
+o	date_maj date
+o	date_début_séjour datetime
+o	date_fin_séjour datetime
+o	prix_total int
+o	état varchar(50)
+
+service
+o	id (AI)
+o	libelle varchar(100)
+</entité>
+
+<association>
+réaliser
+o	client 1,n
+o	réservation 0,1
+
+lier
+o	hotel 0,n
+o	réservation 1,1
+
+prendre
+o	chambre 1,n
+o	réservation 1,1
+
+
+
+donner_accès (quantité)
+o	réservation 1,n
+o	service 0,n
+
+être
+o	client 1,1
+o	profil 1,N
+
+ gérer: 
+ o	individu: 1,1
+ o	hotel: 1,n 
+
+proposer (tarif à l'unité)
+o	service 1,n
+o	hotel 0,n
+
+avoir
+o	individu 1,1
+o	profil 1,n
+
+appartenir
+o	chambre 1,1
+o	hotel 10,n
+
+standing
+ç	stending 1,n
+o	hotel 1,1
+
+
+catégoriser
+o	catégorie 1,n
+o	chambre 1,1
+
+tarifer (tarif) 
+o	standing   1,n
+o	catégorie 1,n 
+</association>
+<MCD>
