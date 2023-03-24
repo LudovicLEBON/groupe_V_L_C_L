@@ -1,0 +1,12 @@
+faire une documentation technique avec les logiciels utilisé, et tous ce qui est relative à la mise à jour (base de donnée, fremwork...)
+
+faire une documentation utilisateur avec des capture avec le descriptif de comment faire l'ensemble des taches (faire une réservation, consulter l'historique....)
+
+faire les interfaces admin très simples
+faire les interface user bien épuré 
+les tables n-n doivent être traité dans les table enfant (dans le formulaire par exemple avec la liste des liaisons et un boutton associer dissocier
+
+faire de bon disine du site avec les vue utilisateur 
+s'inspirer de site existant éventuellement 
+
+répartitions des tache au fur et à mesures
