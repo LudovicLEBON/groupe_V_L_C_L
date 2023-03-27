@@ -1,41 +1,36 @@
     <h2>hotel</h2>
-    <p><a class="btn btn-primary" href="<?=hlien("hotel","edit","id",0)?>">Nouveau hotel</a></p>
-	<table class="table table-striped table-bordered table-hover">
-		<thead>
-			<tr>
-				
-			<th>Id</th>
-			<th>Nom</th>
-			<th>Telephone</th>
-			<th>Adresse</th>
-			<th>Longitude</th>
-			<th>Latitude</th>
-			<th>Photo</th>
-			<th>Descriptif</th>
-			<th>Statut</th>
-			<th>Standing</th>
-				<th>modifier</th>
-				<th>supprimer</th>
-			</tr>
-		</thead>
-		<tbody>
-		<?php
-		foreach ( $data as $row) { ?>
-		<tr>
-			
-			<td><?=mhe($row['hot_id'])?></td>
-			<td><?=mhe($row['hot_nom'])?></td>
-			<td><?=mhe($row['hot_telephone'])?></td>
-			<td><?=mhe($row['hot_adresse'])?></td>
-			<td><?=mhe($row['hot_longitude'])?></td>
-			<td><?=mhe($row['hot_latitude'])?></td>
-			<td><?=mhe($row['hot_photo'])?></td>
-			<td><?=mhe($row['hot_descriptif'])?></td>
-			<td><?=mhe($row['hot_statut'])?></td>
-			<td><?=mhe($row['hot_standing'])?></td>
-			<td><a class="btn btn-warning" href="<?=hlien("hotel","edit","id",$row["hot_id"])?>">Modifier</a></td>
-			<td><a class="btn btn-danger" href="<?=hlien("hotel","delete","id",$row["hot_id"])?>">Supprimer</a></td>
-		</tr>
-		<?php } ?>
-		</tbody>
-	</table>
+
+    <div class="fichehotel">
+    	<?php
+		foreach ($data as $row) { ?>
+    		<article class="arthotel">
+    			<h3 class="card"><?= mhe($row['hot_nom']) ?> </h3>
+    			<p class="card">
+    				Téléphone: <?= mhe($row['hot_telephone']) ?>
+    			</p>
+    			<p class="card">
+    				Adresse: <?= mhe($row['hot_adresse']) ?>
+    			</p>
+    			<p class="card">
+    				<img src="<?= mhe($row['hot_photo']) ?>" alt="">
+    			</p>
+    			<p class="card">
+    				Descriptif: <?= mhe($row['hot_descriptif']) ?>
+    			</p>
+    			<p class="card">
+    				Statut: <?= mhe($row['hot_statut']) ?>
+    			</p>
+    			<p class="card">
+    				Standing: <?= mhe($row['sta_libelle']) ?>
+    			</p>
+
+
+    		</article>
+
+
+
+    	<?php } ?>
+
+
+
+    </div>

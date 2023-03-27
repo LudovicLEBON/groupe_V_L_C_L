@@ -1,51 +1,54 @@
-    <h2>chambre</h2>
-    <p><a class="btn btn-primary" href="<?=hlien("chambre","edit","id",0)?>">Nouveau chambre</a></p>
-	<table class="table table-striped table-bordered table-hover">
-		<thead>
-			<tr>
-				
-			<th>Id</th>
-			<th>Nom</th>
-			<th>Photo</th>
-			<th>Descriptif</th>
-			<th>Statut</th>
-			<th>Surface</th>
-			<th>Type_lit</th>
-			<th>Jacuzzi</th>
-			<th>Balcon</th>
-			<th>Wifi</th>
-			<th>Minibar</th>
-			<th>Coffre</th>
-			<th>Vue</th>
-			<th>Categorie</th>
-			<th>Hotel</th>
-				<th>modifier</th>
-				<th>supprimer</th>
-			</tr>
-		</thead>
-		<tbody>
-		<?php
-		foreach ( $data as $row) { ?>
-		<tr>
-			
-			<td><?=mhe($row['cha_id'])?></td>
-			<td><?=mhe($row['cha_nom'])?></td>
-			<td><?=mhe($row['cha_photo'])?></td>
-			<td><?=mhe($row['cha_descriptif'])?></td>
-			<td><?=mhe($row['cha_statut'])?></td>
-			<td><?=mhe($row['cha_surface'])?></td>
-			<td><?=mhe($row['cha_type_lit'])?></td>
-			<td><?=mhe($row['cha_jacuzzi'])?></td>
-			<td><?=mhe($row['cha_balcon'])?></td>
-			<td><?=mhe($row['cha_wifi'])?></td>
-			<td><?=mhe($row['cha_minibar'])?></td>
-			<td><?=mhe($row['cha_coffre'])?></td>
-			<td><?=mhe($row['cha_vue'])?></td>
-			<td><?=mhe($row['cha_categorie'])?></td>
-			<td><?=mhe($row['cha_hotel'])?></td>
-			<td><a class="btn btn-warning" href="<?=hlien("chambre","edit","id",$row["cha_id"])?>">Modifier</a></td>
-			<td><a class="btn btn-danger" href="<?=hlien("chambre","delete","id",$row["cha_id"])?>">Supprimer</a></td>
-		</tr>
-		<?php } ?>
-		</tbody>
-	</table>
+<h2>Nos chambres </h2>
+
+<div class="fichechambre">
+    <?php
+    foreach ($data as $row) { ?>
+        <article class="artchambre">
+            <h3 class="card"><?= mhe($row['cha_nom']) ?> </h3>
+            <img src="<?= mhe($row['cha_photo']) ?>" alt="" class="card">
+            <p class="card">
+                Descriptif: <?= mhe($row['cha_descriptif']) ?>
+            </p>
+            <p class="card">
+                Statut: <?= mhe($row['cha_statut']) ?>
+            </p>
+            <p class="card">
+                Surface: <?= mhe($row['cha_surface']) ?> M²
+            </p>
+            <p class="card">
+                Lit: <?= mhe($row['cha_type_lit']) ?>
+            </p>
+            <p class="card">
+                Jacuzzi: <?= ($row['cha_jacuzzi'] == 0) ? "non" : "oui" ?>
+            </p>
+            <p class="card">
+                Balcon: <?= ($row['cha_balcon'] == 0) ? "non" : "oui" ?>
+            </p>
+            <p class="card">
+                Wifi: <?= ($row['cha_wifi'] == 0) ? "non" : "oui" ?>
+            </p>
+            <p class="card">
+                Minibar: <?= ($row['cha_minibar'] == 0) ? "non" : "oui" ?>
+            </p>
+            <p class="card">
+                Coffre: <?= ($row['cha_coffre'] == 0) ? "non" : "oui" ?>
+            </p>
+            <p>
+                Vue: <?= ($row['cha_vue'] == 0) ? "non" : "oui" ?>
+            </p>
+            <p class="card">
+
+                Catégorie: <?= mhe($row['cat_libelle']) ?>
+
+            </p>
+            <p class="card">
+                Hotel: <?= mhe($row['hot_nom']) ?>
+
+            </p>
+            <p class="card">
+                Prix: <?= mhe($row['tar_prix']) ?>€  
+
+            </p>
+        </article>
+    <?php } ?>
+</div>
