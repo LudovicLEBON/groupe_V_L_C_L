@@ -23,13 +23,15 @@
         <li><a class='nav-link' href='<?= hlien("standing", "index") ?>'>Standing</a></li>
         <li><a class='nav-link' href='<?= hlien("tarifer", "index") ?>'>Tarifer</a></li>
 
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li><a class="nav-link" href="<?= hlien("database", "creer") ?>">Créer BDD</a></li>
-        <li><a class="nav-link" href='<?= hlien("database", "dataset") ?>'>Jeu de données</a></li>
-        <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
-        <li><a class="nav-link" href='<?= hlien("authentification", "connexion") ?>'>Connexion</a></li>
-      </ul>
+        <ul class="navbar-nav ml-auto">
+          <?php if (isset($_SESSION["cli_id"]) || isset($_SESSION["ind_id"])) { ?>
+            <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
+            <li><a class="nav-link" ?><?= $_SESSION["ann_login"] ?></a></li>
+          <?php } else { ?>
+            <li><a class="nav-link" href='<?= hlien("authentification", "connexion") ?>'>Connexion</a></li>
+            <li><a class="nav-link" href='<?= hlien("authentification", "inscription") ?>'>Inscription</a></li>
+          <?php } ?>
+        </ul>
     </div>
   </div>
 </nav>

@@ -238,4 +238,4 @@ add
 -- génération données table profil
 
 insert into profil
-values (null, "visiteur"), (null, "personnel"), (null, "SRC"), (null, "gerant");
+values (null, "visitor"), (null, "user"), (null, "moderator"), (null, "admin");
