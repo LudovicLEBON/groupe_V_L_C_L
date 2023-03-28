@@ -1,8 +1,7 @@
     <h2>chambre</h2>
     <div class="formulaire">
-    	<form method="post" class="row" >
+    	<form method="post" class="row">
     		<p class="form_group col">
-
     			<label for="cha_nom">Nom:</label>
     			<input type="text" name="cha_nom" id="cha_nom" size="25">
     		</p>
@@ -21,14 +20,6 @@
     		</p>
     	</form>
     </div>
-
-
-
-
-
-
-
-
     <p><a class="btn btn-primary" href="<?= hlien("chambre", "edit", "id", 0) ?>">Nouveau chambre</a></p>
     <table class="table table-striped table-bordered table-hover">
     	<thead>

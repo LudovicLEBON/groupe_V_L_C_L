@@ -21,6 +21,14 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	function a_indexAdmin()
+	{
+		$u = new Chambre();
+		$data = $u->selectShort();
+		require $this->gabarit;
+	}
+
+
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit()
 	{

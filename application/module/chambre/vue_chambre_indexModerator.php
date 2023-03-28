@@ -1,4 +1,29 @@
 <h2>chambre</h2>
+
+<div class="formulaire d-flex row-9">
+    <form method="post">
+        <p class="form_group col-3">
+
+            <label for="cha_nom">Nom:</label>
+            <input type="text" name="cha_nom" id="cha_nom" size="20">
+
+        </p>
+        <p class="form_group col-3">
+            <label for="cha_categorie">Catégorie:</label>
+            <select id='cha_categorie' name='cha_categorie'>
+                <?= Table::HTMLoptions("select * from categorie order by cat_libelle", "cat_id", "cat_libelle", $cha_categorie) ?>
+            </select>
+        </p>
+        <p class="form-group col-3">
+            <label for="cha_statut">Statut </label>
+            <input type="text" name="cha_statut" id="cha_statut" size="20">
+        </p>
+        <p class="form-group col-3">
+            <input type="submit" id="btsubmit" value="rechercher">
+        </p>
+    </form>
+</div>
+
 <p><a class="btn btn-primary" href="<?= hlien("chambre", "edit", "id", 0) ?>">Nouveau chambre</a></p>
 <table class="table table-striped table-bordered table-hover">
     <thead>
