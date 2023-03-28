@@ -3,27 +3,27 @@
 		
                         <div class='form-group'>
                             <label for='res_date_creation'>Date_creation</label>
-                            <input id='res_date_creation' name='res_date_creation' type='text' size='50' value='<?=mhe($res_date_creation)?>'  class='form-control' />
+                            <input id='res_date_creation' name='res_date_creation' type='date' size='10' value='<?=mhe($res_date_creation)?>'  class='form-control' />
                         </div>
                         <div class='form-group'>
                             <label for='res_date_maj'>Date_maj</label>
-                            <input id='res_date_maj' name='res_date_maj' type='text' size='50' value='<?=mhe($res_date_maj)?>'  class='form-control' />
+                            <input id='res_date_maj' name='res_date_maj' type='date' size='10' value='<?=mhe($res_date_maj)?>'  class='form-control' />
                         </div>
                         <div class='form-group'>
                             <label for='res_date_debut_sejour'>Date_debut_sejour</label>
-                            <input id='res_date_debut_sejour' name='res_date_debut_sejour' type='text' size='50' value='<?=mhe($res_date_debut_sejour)?>'  class='form-control' />
+                            <input id='res_date_debut_sejour' name='res_date_debut_sejour' type='date' size='10' value='<?=mhe($res_date_debut_sejour)?>'  class='form-control' />
                         </div>
                         <div class='form-group'>
                             <label for='res_date_fin_sejour'>Date_fin_sejour</label>
-                            <input id='res_date_fin_sejour' name='res_date_fin_sejour' type='text' size='50' value='<?=mhe($res_date_fin_sejour)?>'  class='form-control' />
+                            <input id='res_date_fin_sejour' name='res_date_fin_sejour' type='date' size='10' value='<?=mhe($res_date_fin_sejour)?>'  class='form-control' />
                         </div>
                         <div class='form-group'>
                             <label for='res_prix_total'>Prix_total</label>
-                            <input id='res_prix_total' name='res_prix_total' type='text' size='50' value='<?=mhe($res_prix_total)?>'  class='form-control' />
+                            <input id='res_prix_total' name='res_prix_total' type='number' size='10' value='<?=mhe($res_prix_total)?>'  class='form-control' />
                         </div>
                         <div class='form-group'>
                             <label for='res_etat'>Etat</label>
-                            <input id='res_etat' name='res_etat' type='text' size='50' value='<?=mhe($res_etat)?>'  class='form-control' />
+                            <input id='res_etat' name='res_etat' type='number' size='10' value='<?=mhe($res_etat)?>'  class='form-control' />
                         </div>
                         <div class='form-group'>
                             <label for='res_client'>Client</label>
