@@ -20,6 +20,12 @@
         <label for='ind_pwd2'>Vérification du Mot de passe</label>
         <input id='ind_pwd2' name='ind_pwd2' type='password' size='500' value='' class='form-control' />
     </div>
+    <div class='form-group'>
+        <label for='ind_hotel'>Hôtel d'affectation</label>
+        <select id='ind_hotel' name='ind_hotel' class='form-control'>
+            <?= Table::HTMLoptions("select * from hotel order by hot_nom", "hot_id", "hot_nom", $ind_hotel) ?>
+        </select>
+    </div>
 
     <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
 </form>
