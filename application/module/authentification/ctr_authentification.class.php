@@ -133,7 +133,7 @@ class Ctr_authentification extends Ctr_controleur
     }
 
 
-    public function a_connexionCient()
+    public function a_connexionClient()
     {
         if (isset($_SESSION["ind_id"]) or isset($_SESSION["cli_id"])) {
             $_SESSION["message"][] = "Tentative d'intrusion détectée...";

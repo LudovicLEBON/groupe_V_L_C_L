@@ -28,8 +28,9 @@
             <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
             <li><a class="nav-link" ?><?= $_SESSION["ann_login"] ?></a></li>
           <?php } else { ?>
-            <li><a class="nav-link" href='<?= hlien("authentification", "connexion") ?>'>Connexion</a></li>
-            <li><a class="nav-link" href='<?= hlien("authentification", "inscription") ?>'>Inscription</a></li>
+            <li><a class="nav-link" href='<?= hlien("authentification", "connexionPersonnel") ?>'>Connexion du personnel</a></li>
+            <li><a class="nav-link" href='<?= hlien("authentification", "connexionClient") ?>'>Connexion</a></li>
+            <li><a class="nav-link" href='<?= hlien("authentification", "inscriptionClient") ?>'>Inscription</a></li>
           <?php } ?>
         </ul>
     </div>

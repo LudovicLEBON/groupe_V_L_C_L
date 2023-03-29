@@ -1,8 +1,8 @@
-        <h2>Connexion</h2>
+        <h2>Connexion du Personnel</h2>
         <form method="post">
             <div class='form-group'>
-                <input id='ind_login' name='ind_login' type='text' size='50' value='<?= mhe($ind_login) ?>' class='form-control' />
                 <label for='ind_login'>login</label>
+                <input id='ind_login' name='ind_login' type='text' size='50' value='<?= mhe($ind_login) ?>' class='form-control' />
             </div>
 
             <div class='form-group'>
