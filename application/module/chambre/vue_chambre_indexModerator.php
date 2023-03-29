@@ -18,6 +18,12 @@
             <label for="cha_statut">Statut </label>
             <input type="text" name="cha_statut" id="cha_statut" size="20">
         </p>
+        <p class="form-group col">
+            <Label for="cha_hotel">Hotel:</Label>
+            <select id='cha_hotel' name='cha_hotel'>
+                <?= Table::HTMLoptions("select * from hotel order by hot_id", "hot_id", "hot_nom", $cha_hotel) ?>
+            </select>
+        </p>
         <p class="form-group col-3">
             <input type="submit" id="btsubmit" value="rechercher">
         </p>

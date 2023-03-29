@@ -3,9 +3,10 @@
 <div class="formulaire">
 	<form method="post" class="row">
 		<p class="form_group col">
-
 			<label for="hot_nom">Nom:</label>
-			<input type="text" name="hot_nom" id="hot_nom" size="25">
+    			<select id='hot_nom' name='hot_nom'>
+    				<?= Table::HTMLoptions("select * from hotel order by hot_id", "hot_id", "hot_nom", $hot_nom) ?>
+    			</select>
 		</p>
 		<p class="form_group col">
 			<label for="hot_standing">Standing:</label>

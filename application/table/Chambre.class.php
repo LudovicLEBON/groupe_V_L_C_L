@@ -10,7 +10,7 @@ class Chambre extends Table
 		parent::__construct("chambre", "cha_id");
 	}
 
-	public function selectCategorieHotel(): array
+	public function selectChambre(): array
 	{
 		$sql = "select * from chambre, categorie, hotel,tarifer, standing 
 		 where cha_categorie=cat_id and cha_hotel=hot_id and tar_standing=sta_id and tar_categorie ";
@@ -18,7 +18,7 @@ class Chambre extends Table
 		return $result->fetchAll();
 	}
 
-
+	//fonction non usuelle, permet d'afficher moins de données pour ne pas faire buger chrome.
 	public function selectShort(): array
 	{
 		$sql = "select * from chambre, categorie, hotel,tarifer, standing 

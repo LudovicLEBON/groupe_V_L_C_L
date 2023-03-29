@@ -28,6 +28,12 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	function a_indexModerator()
+	{
+		$u = new Hotel();
+		$data = $u->selectHotel();
+		require $this->gabarit;
+	}
 
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit()

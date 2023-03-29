@@ -17,7 +17,7 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 	function a_index()
 	{
 		$u = new Chambre();
-		$data = $u->selectCategorieHotel();
+		$data = $u->selectchambre();
 		require $this->gabarit;
 	}
 
@@ -28,6 +28,12 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	function a_indexModerator()
+	{
+		$u = new Chambre();
+		$data = $u->selectShort();
+		require $this->gabarit;
+	}
 
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit()
