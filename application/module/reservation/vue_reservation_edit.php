@@ -35,15 +35,19 @@
             where cha_hotel=hot_id and hot_id=" . $res_hotel . " ", "cli_id", "cli_login", $res_client) ?>
         </select>
     </div>
-    <?php
-    $data = Donneracces::HTML_checkbox("select * frome donneracces,services,reservation,hotel,prestation 
-            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pres_hotel=hot_id and hot_id=" . $res_hotel . " order by ser_libelle", "ser_id", "ser_libelle", $don_service, "don_quantite", "don_id");
-    foreach ($data as $ligne) {
-        extract($ligne); ?>
-        <li><a href="oeuvre_edit.php?id=<?= $oeu_id ?>"><?= $oeu_titre ?></a> - <a href="dissocier.php?idoeuvre=<?= $oeu_id ?>&idauteur=<?= $aut_id ?>">dissocier</a></li>
-    <?php
-    }
-    ?>
+    <div>
+        <form method="post" action="<?= hlien("donneracces", "save") ?>">
+            <?php
+            $data = Donneracces::HTML_checkbox("select * from donneracces,services,reservation,hotel,prestation 
+            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pre_hotel=hot_id and hot_id=" . $res_hotel . " order by ser_libelle", "ser_id", "ser_libelle", $don_service, "don_quantite", "don_id");
+            /*  foreach ($data as $ligne) {
+        extract($ligne);*/ ?>
+            <li><a href="oeuvre_edit.php?id=<?= $oeu_id ?>"><?= $oeu_titre ?></a> - <a href="dissocier.php?idoeuvre=<?= $oeu_id ?>&idauteur=<?= $aut_id ?>">dissocier</a></li>
+            <?php
+            /* }*/
+            ?>
+        </form>
+    </div>
     </div>
     <div class='form-group'>
         <label for='res_prix_total'>Prix_total</label>

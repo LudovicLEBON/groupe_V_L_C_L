@@ -1,9 +1,12 @@
 <?php
+
 /**
 Classe créé par le générateur.
-*/
-class Donneracces extends Table {
-	public function __construct() {
+ */
+class Donneracces extends Table
+{
+	public function __construct()
+	{
 		parent::__construct("donneracces", "don_id");
 	}
 
@@ -47,7 +50,7 @@ class Donneracces extends Table {
 	 * @param string $label2 nom du champ à afficher dans la balise OPTION
 	 * @param integer $id2 valeur à préselectionner
 	 */
-	static public function HTML_checkbox($sql, $pk, $label, $id,$label2,$id2)
+	static public function HTML_checkbox($sql, $pk, $label, $id, $label2, $id2)
 	{
 		$resultat = self::$link->query($sql);
 		$s = "";
@@ -61,6 +64,8 @@ class Donneracces extends Table {
 		}
 		return $s;
 	}
+
+	//faire une fonction selectAll pour les service lié à une réservation et un hotel donnée
 
 	static public function HTMLli($sql, $pk, $label, $id)
 	{
