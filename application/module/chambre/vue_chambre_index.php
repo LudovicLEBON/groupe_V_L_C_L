@@ -19,35 +19,32 @@
                 Lit: <?= mhe($row['cha_type_lit']) ?>
             </p>
             <p class="card">
-                Jacuzzi: <?= ($row['cha_jacuzzi'] == 0) ? "non" : "oui" ?>
+                <?= ($row['cha_jacuzzi'] == 0) ? "" : "jaccuzi" ?>
             </p>
             <p class="card">
-                Balcon: <?= ($row['cha_balcon'] == 0) ? "non" : "oui" ?>
+                <?= ($row['cha_balcon'] == 0) ? "" : "balcon" ?>
             </p>
             <p class="card">
-                Wifi: <?= ($row['cha_wifi'] == 0) ? "non" : "oui" ?>
+                <?= ($row['cha_wifi'] == 0) ? "" : "wifi" ?>
             </p>
             <p class="card">
-                Minibar: <?= ($row['cha_minibar'] == 0) ? "non" : "oui" ?>
+                <?= ($row['cha_minibar'] == 0) ? "" : "minibar" ?>
             </p>
             <p class="card">
-                Coffre: <?= ($row['cha_coffre'] == 0) ? "non" : "oui" ?>
+                <?= ($row['cha_coffre'] == 0) ? "" : "coffre" ?>
             </p>
             <p>
-                Vue: <?= ($row['cha_vue'] == 0) ? "non" : "oui" ?>
+                <?= ($row['cha_vue'] == 0) ? "" : "vue" ?>
             </p>
             <p class="card">
-
                 Catégorie: <?= mhe($row['cat_libelle']) ?>
-
             </p>
             <p class="card">
                 Hotel: <?= mhe($row['hot_nom']) ?>
 
             </p>
             <p class="card">
-                Prix: <?= mhe($row['tar_prix']) ?>€  
-
+                Prix: <?= mhe($row['tar_prix']) ?>€
             </p>
         </article>
     <?php } ?>
