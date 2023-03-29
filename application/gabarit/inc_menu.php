@@ -11,10 +11,10 @@
 
 
         <li><a class='nav-link' href='<?= hlien("categorie", "index") ?>'>Categorie</a></li>
-        <li><a class='nav-link' href='<?= hlien("chambre", "index") ?>'>Chambre</a></li>
+        <li><a class='nav-link' href='<?= hlien("chambre", "indexAdmin") ?>'>Chambre</a></li>
         <li><a class='nav-link' href='<?= hlien("client", "index") ?>'>Client</a></li>
         <li><a class='nav-link' href='<?= hlien("donneracces", "index") ?>'>Donneracces</a></li>
-        <li><a class='nav-link' href='<?= hlien("hotel", "index") ?>'>Hotel</a></li>
+        <li><a class='nav-link' href='<?= hlien("hotel", "indexAdmin") ?>'>Hotel</a></li>
         <li><a class='nav-link' href='<?= hlien("individu", "index") ?>'>Individu</a></li>
         <li><a class='nav-link' href='<?= hlien("prestation", "index") ?>'>Prestation</a></li>
         <li><a class='nav-link' href='<?= hlien("profil", "index") ?>'>Profil</a></li>

@@ -1,4 +1,29 @@
 <h2>hotel</h2>
+
+<div class="formulaire">
+    <form method="post">
+        <p class="form_group">
+
+            <label for="hot_nom">Nom:</label>
+            <input type="text" name="hot_nom" id="hot_nom" size="20">
+        </p>
+        <p class="form_group">
+            <label for="hot_standing">Standing:</label>
+            <select id='hot_standing' name='hot_standing'>
+                <?= Table::HTMLoptions("select * from standinf  order by sta_libelle", "sta_id", "sta_libelle", $hot_standing) ?>
+            </select>
+        </p>
+        <p class="form-group">
+            <label for="hot_statut">Statut </label>
+            <input type="text" name="hot_statut" id="hot_statut" size="20">
+        </p>
+        <p class="form-group">
+            <input type="submit" id="btsubmit" value="rechercher">
+        </p>
+    </form>
+
+</div>
+
 <p><a class="btn btn-primary" href="<?= hlien("hotel", "edit", "id", 0) ?>">Nouveau hotel</a></p>
 <table class="table table-striped table-bordered table-hover">
     <thead>
