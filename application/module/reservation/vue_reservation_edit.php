@@ -25,7 +25,7 @@
     </div>
     <div class='form-group'>
         <label for='res_hotel'>Hotel</label>
-        <input readonly id='res_hotel' name='res_hotel' type="text" size="50" value="<?= $res_hotel ?>" class='form-control' />
+        <input readonly id='res_hotel' name='res_hotel' type="text" size="50" value="hotel <?= $res_hotel ?>" class='form-control' />
 
     </div>
     <div class='form-group'>
@@ -44,15 +44,11 @@
     </div>
     <div>
         <form method="post" action="<?= hlien("donneracces", "save") ?>">
-            <?php
-            $data = Donneracces::HTML_checkbox("select * from donneracces,services,reservation,hotel,prestation 
-            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pre_hotel=hot_id and hot_id=" . $res_hotel . " order by ser_libelle", "ser_id", "ser_libelle", 0, "don_quantite", "don_id");
-            echo $data;
-            /*  foreach ($data as $ligne) {
-        extract($ligne);*/ ?>
-            <li><a href="oeuvre_edit.php?id=<?= $oeu_id ?>"><?= $oeu_titre ?></a> - <a href="dissocier.php?idoeuvre=<?= $oeu_id ?>&idauteur=<?= $aut_id ?>">dissocier</a></li>
-            <?php
-            /* }*/
+            <?=
+            Donneracces::HTML_checkbox("select * from donneracces,services,reservation,hotel,prestation 
+            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pre_hotel=hot_id and hot_id=" . $res_hotel . "
+            and res_id=" . $res_id . " order by ser_libelle", "ser_id", "ser_libelle", 0, "don_quantite", "don_id");
+
             ?>
         </form>
     </div>

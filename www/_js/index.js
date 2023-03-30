@@ -9,3 +9,8 @@ function confSuppr(e) {
   if (boolConf) return false;
   e.proventDefault();
 }
+
+let services = document.getElementsByClassName("submitServices");
+services.addEventListener("click", () => {
+  hlien("donneracces", "save", "id", $don_id);
+});
