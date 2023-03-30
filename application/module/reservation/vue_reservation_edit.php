@@ -31,15 +31,23 @@
     <div class='form-group'>
         <label for='res_chambre'>Chambre</label>
         <select id='res_chambre' name='res_chambre' class='form-control'>
-            <?= Table::HTMLoptions("select * from chambre,hotel 
-            where cha_hotel=hot_id and hot_id=" . $res_hotel . " ", "cli_id", "cli_login", $res_client) ?>
+            <?= Chambre::HTMLoptionsChamb(
+                "select * from chambre,hotel,categorie 
+            where cha_hotel=hot_id and cha_categorie=cat_id and hot_id=" . $res_hotel . " ",
+                "cha_id",
+                "cha_nom",
+                "cha_type_lit",
+                "cat_libelle",
+                $res_chambre
+            ) ?>
         </select>
     </div>
     <div>
         <form method="post" action="<?= hlien("donneracces", "save") ?>">
             <?php
             $data = Donneracces::HTML_checkbox("select * from donneracces,services,reservation,hotel,prestation 
-            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pre_hotel=hot_id and hot_id=" . $res_hotel . " order by ser_libelle", "ser_id", "ser_libelle", $don_service, "don_quantite", "don_id");
+            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pre_hotel=hot_id and hot_id=" . $res_hotel . " order by ser_libelle", "ser_id", "ser_libelle", 0, "don_quantite", "don_id");
+            echo $data;
             /*  foreach ($data as $ligne) {
         extract($ligne);*/ ?>
             <li><a href="oeuvre_edit.php?id=<?= $oeu_id ?>"><?= $oeu_titre ?></a> - <a href="dissocier.php?idoeuvre=<?= $oeu_id ?>&idauteur=<?= $aut_id ?>">dissocier</a></li>
