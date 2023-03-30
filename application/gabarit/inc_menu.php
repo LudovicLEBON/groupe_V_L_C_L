@@ -18,7 +18,7 @@
         <li><a class='nav-link' href='<?= hlien("individu", "index") ?>'>Individu</a></li>
         <li><a class='nav-link' href='<?= hlien("prestation", "index") ?>'>Prestation</a></li>
         <li><a class='nav-link' href='<?= hlien("profil", "index") ?>'>Profil</a></li>
-        <li><a class='nav-link' href='<?= hlien("reservation", "index") ?>'>Reservation</a></li>
+        <li><a class='nav-link' href='<?= hlien("reservation", "indexAdmin") ?>'>Reservation</a></li>
         <li><a class='nav-link' href='<?= hlien("services", "index") ?>'>Services</a></li>
         <li><a class='nav-link' href='<?= hlien("standing", "index") ?>'>Standing</a></li>
         <li><a class='nav-link' href='<?= hlien("tarifer", "index") ?>'>Tarifer</a></li>

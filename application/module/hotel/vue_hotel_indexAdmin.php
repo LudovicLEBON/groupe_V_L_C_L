@@ -4,9 +4,9 @@
 	<form method="post" class="row">
 		<p class="form_group col">
 			<label for="hot_nom">Nom:</label>
-    			<select id='hot_nom' name='hot_nom'>
-    				<?= Table::HTMLoptions("select * from hotel order by hot_id", "hot_id", "hot_nom", $hot_nom) ?>
-    			</select>
+			<select id='hot_nom' name='hot_nom'>
+				<?= Table::HTMLoptions("select * from hotel order by hot_id", "hot_id", "hot_nom", $hot_nom) ?>
+			</select>
 		</p>
 		<p class="form_group col">
 			<label for="hot_standing">Standing:</label>
@@ -62,7 +62,7 @@
 				<td><?= mhe($row['hot_standing']) ?></td>
 				<td>
 					<ul> <?= Prestation::HTMLli("select * from prestation,services,hotel
-				where pre_service=ser_id and pre_hotel=hot_id and hot_id=" . $row['hot_id'] . "  order by ser_libelle", "ser_id", "ser_libelle", $ser_libelle)  ?></ul>
+				where pre_service=ser_id and pre_hotel=hot_id and hot_id=" . $row['hot_id'] . "  order by ser_libelle", "ser_id", "ser_libelle", $row['ser_libelle'])  ?></ul>
 				</td>
 				<td><a class="btn btn-warning" href="<?= hlien("hotel", "edit", "id", $row["hot_id"]) ?>">Modifier</a></td>
 				<td><a class="btn btn-danger" href="<?= hlien("hotel", "delete", "id", $row["hot_id"]) ?>">Supprimer</a></td>

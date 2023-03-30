@@ -11,26 +11,21 @@
         <p class="form_group col">
             <label for="hot_standing">Standing:</label>
             <select id='hot_standing' name='hot_standing'>
-                <?= Table::HTMLoptions("select * from standinf  order by sta_libelle", "sta_id", "sta_libelle", $hot_standing) ?>
+                <?= Table::HTMLoptions("select * from standing  order by sta_libelle", "sta_id", "sta_libelle", $hot_standing) ?>
             </select>
         </p>
         <p class="form-group col">
             <label for="hot_statut">Statut </label>
-            <?php $statut = ["libre", "travaux", "occupé"]; ?>
-            <select id='hot_statut' name='hot_statut' class='form-control'>
-                <?php foreach ($statut as $key) {
-                    $selected = ($key === $hot_statut) ? "selected" : ""; ?>
-                    <option value="<?= $key ?>" <?= $selected ?>><?= $key ?></option>
-                <?php } ?>
-            </select>
+            <input type="text" name="hot_statut" id="hot_statut" size="25">
         </p>
         <p class="form-group col">
             <input type="submit" id="btsubmit" value="rechercher">
         </p>
     </form>
+
 </div>
 
-
+<p><a class="btn btn-primary" href="<?= hlien("hotel", "edit", "id", 0) ?>">Nouveau hotel</a></p>
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
@@ -45,6 +40,7 @@
             <th>Descriptif</th>
             <th>Statut</th>
             <th>Standing</th>
+            <th>service</th>
         </tr>
     </thead>
     <tbody>
@@ -62,6 +58,10 @@
                 <td><?= mhe($row['hot_descriptif']) ?></td>
                 <td><?= mhe($row['hot_statut']) ?></td>
                 <td><?= mhe($row['hot_standing']) ?></td>
+                <td>
+                    <ul> <?= Prestation::HTMLli("select * from prestation,services,hotel
+				where pre_service=ser_id and pre_hotel=hot_id and hot_id=" . $row['hot_id'] . "  order by ser_libelle", "ser_id", "ser_libelle", $row['ser_libelle'])  ?></ul>
+                </td>
             </tr>
         <?php } ?>
     </tbody>

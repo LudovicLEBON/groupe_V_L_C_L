@@ -16,6 +16,18 @@ class Ctr_tarifer extends Ctr_controleur implements I_crud {
 		$data=$u->selectAll();
 		require $this->gabarit;
 	}
+
+	function a_indexAdmin() {
+		$u=new Tarifer();
+		$data=$u->selectTarifer();
+		require $this->gabarit;
+	}
+	function a_indexModerator() {
+		$u=new Tarifer();
+		$data=$u->selectTarifer();
+		require $this->gabarit;
+	}
+
 	
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit() {		
