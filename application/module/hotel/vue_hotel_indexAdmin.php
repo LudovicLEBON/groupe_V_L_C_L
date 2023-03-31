@@ -19,7 +19,7 @@
 			<input type="text" name="hot_statut" id="hot_statut" size="25">
 		</p>
 		<p class="form-group col">
-			<input type="submit" id="btsubmit" value="rechercher">
+			<input type="submit" class="btsearch" value="rechercher">
 		</p>
 	</form>
 

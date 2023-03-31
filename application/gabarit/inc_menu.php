@@ -9,19 +9,36 @@
           <a class="nav-link active" aria-current="page" href="index.php">Accueil</span></a>
         </li>
 
+        <?php if (isset($_SESSION["ind_id"]) and $_SESSION["ind_profil"] == 4) { ?>
 
-        <li><a class='nav-link' href='<?= hlien("categorie", "index") ?>'>Categorie</a></li>
-        <li><a class='nav-link' href='<?= hlien("chambre", "indexAdmin") ?>'>Chambre</a></li>
-        <li><a class='nav-link' href='<?= hlien("client", "index") ?>'>Client</a></li>
-        <li><a class='nav-link' href='<?= hlien("donneracces", "index") ?>'>Donneracces</a></li>
-        <li><a class='nav-link' href='<?= hlien("hotel", "indexAdmin") ?>'>Hotel</a></li>
-        <li><a class='nav-link' href='<?= hlien("individu", "index") ?>'>Individu</a></li>
-        <li><a class='nav-link' href='<?= hlien("prestation", "index") ?>'>Prestation</a></li>
-        <li><a class='nav-link' href='<?= hlien("profil", "index") ?>'>Profil</a></li>
-        <li><a class='nav-link' href='<?= hlien("reservation", "indexAdmin") ?>'>Reservation</a></li>
-        <li><a class='nav-link' href='<?= hlien("services", "index") ?>'>Services</a></li>
-        <li><a class='nav-link' href='<?= hlien("standing", "index") ?>'>Standing</a></li>
-        <li><a class='nav-link' href='<?= hlien("tarifer", "index") ?>'>Tarifer</a></li>
+          <li><a class='nav-link' href='<?= hlien("chambre", "indexAdmin") ?>'>Chambre</a></li>
+          <li><a class='nav-link' href='<?= hlien("hotel", "indexAdmin") ?>'>Hotel</a></li>
+          <li><a class='nav-link' href='<?= hlien("reservation", "indexAdmin") ?>'>Reservation</a></li>
+          <li><a class='nav-link' href='<?= hlien("tarifer", "indexAdmin") ?>'>Tarifer</a></li>
+
+
+
+          <li><a class='nav-link' href='<?= hlien("client", "index") ?>'>Client</a></li>
+          <li><a class='nav-link' href='<?= hlien("individu", "index") ?>'>Individu</a></li>
+          <li><a class='nav-link' href='<?= hlien("donneracces", "index") ?>'>Donneracces</a></li>
+          <li><a class='nav-link' href='<?= hlien("prestation", "index") ?>'>Prestation</a></li>
+          <li><a class='nav-link' href='<?= hlien("services", "index") ?>'>Services</a></li>
+          <li><a class='nav-link' href='<?= hlien("categorie", "index") ?>'>Categorie</a></li>
+          <li><a class='nav-link' href='<?= hlien("standing", "index") ?>'>Standing</a></li>
+          <li><a class='nav-link' href='<?= hlien("profil", "index") ?>'>Profil</a></li>
+        <?php } ?>
+
+        <?php if (isset($_SESSION["ind_id"]) and $_SESSION["ind_profil"] == 3) { ?>
+
+          <li><a class='nav-link' href='<?= hlien("chambre", "indexModerator") ?>'>Chambre</a></li>
+          <li><a class='nav-link' href='<?= hlien("hotel", "indexModerator") ?>'>Hotel</a></li>
+          <li><a class='nav-link' href='<?= hlien("reservation", "indexModerator") ?>'>Reservation</a></li>
+          <li><a class='nav-link' href='<?= hlien("tarifer", "indexModerator") ?>'>Tarifer</a></li>
+          <li><a class='nav-link' href='<?= hlien("donneracces", "index") ?>'>Donneracces</a></li>
+        <?php } ?>
+
+
+
 
         <ul class="navbar-nav ml-auto">
           <?php if (isset($_SESSION["cli_id"]) || isset($_SESSION["ind_id"])) { ?>

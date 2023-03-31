@@ -29,7 +29,7 @@
             </select>
         </p>
         <p class="form-group col-3">
-            <input type="submit" id="btsubmit" value="rechercher">
+            <input type="submit" class="btsearch" value="rechercher">
         </p>
     </form>
 </div>

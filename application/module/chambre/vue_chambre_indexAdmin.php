@@ -22,7 +22,7 @@
     			</select>
     		</p>
     		<p class="form-group col">
-    			<input type="submit" id="btsubmit" value="rechercher">
+    			<input type="submit" class="btsearch" value="rechercher">
     		</p>
 
     	</form>
