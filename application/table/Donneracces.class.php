@@ -52,21 +52,21 @@ class Donneracces extends Table
 	 */
 	static public function HTML_checkboxModiierSup($row, $pkserv, $label, $servAcc, $label2, $quantAcc)
 	{
-		$s = "";
+		$s = "<table class='table table-bordered'><thead><tr><th>Services</th><th>Quantités</th><th>Options</th></tr></thead>";
 
-		echo "<pre>" . print_r($row) . "</pre>";
+		//echo "<pre>" . print_r($row) . "</pre>";
 		foreach ($row as $tab) {
-			if ($tab[$pkserv] == $servAcc)
-				$sel = " checked ";
-			else
-				$sel = "";
 
-			$s = $s . "<input type='checkbox' name='$servAcc' id='$servAcc' $sel  value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label>
-			 - <label for='$quantAcc'>Quantité</label><input type='number' name='$quantAcc' id='$quantAcc' size='5' value='$tab[$label2]'>
-			<button class='btn submitServices btn-success'>Modifier</button>
-			<button class='btn delatServices btn-danger'>Suprimer</button>
-			<br>";
+			$sel = " checked ";
+
+
+			$s = $s . "<tbody><tr><td><input type='checkbox' name='$servAcc' id='$servAcc' $sel  value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label>
+			 </td><td><input type='number' name='$quantAcc' id='$quantAcc' size='5' value='$tab[$label2]'>
+			</td><td><button class='btn submitServices btn-success'>Modifier</button>
+			 - <button class='btn delatServices btn-danger'>Suprimer</button>
+			</td></tr>";
 		}
+		$s = $s . "</tbody></table>";
 		return $s;
 	}
 
@@ -82,19 +82,18 @@ class Donneracces extends Table
 	 */
 	static public function HTML_checkboxAjouter($row, $pkserv, $label, $servAcc, $label2, $quantAcc)
 	{
-		$s = "";
+		$s = "<table class='table table-bordered'><thead><tr>><th>Services</th><th>Quantités</th><th>Options</th></tr></thead>";
 		foreach ($row as $tab) {
 			if ($tab[$pkserv] == $servAcc)
 				$sel = "";
 			else
 				$sel = "checked";
 
-			$s = $s . "<input type='checkbox' name='$servAcc' id='$servAcc' $sel  value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label>
-			 - <label for='$quantAcc'>Quantité</label><input type='number' name='$quantAcc' id='$quantAcc' size='5' value='$tab[$label2]'>
-			<button class='btn submitServices btn-warning'>Modifier</button>
-			
-			<br>";
+			$s = $s . "<tbody><tr><td><input type='checkbox' name='$servAcc' id='$servAcc' $sel  value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label></td>
+			 <td> <input type='number' name='$quantAcc' id='$quantAcc' size='5' value='$tab[$label2]'></td>
+			<td><button class='btn submitServices btn-warning'>Modifier</button></td></tr>";
 		}
+		$s = $s . "</tbody><table>";
 		return $s;
 	}
 
