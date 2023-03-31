@@ -42,16 +42,7 @@
             ) ?>
         </select>
     </div>
-    <div>
-        <form method="post" action="<?= hlien("donneracces", "save") ?>">
-            <?=
-            Donneracces::HTML_checkbox("select * from donneracces,services,reservation,hotel,prestation 
-            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pre_hotel=hot_id and hot_id=" . $res_hotel . "
-            and res_id=" . $res_id . " order by ser_libelle", "ser_id", "ser_libelle", 0, "don_quantite", "don_id");
 
-            ?>
-        </form>
-    </div>
     </div>
     <div class='form-group'>
         <label for='res_prix_total'>Prix_total</label>

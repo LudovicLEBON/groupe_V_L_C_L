@@ -53,6 +53,8 @@ class Donneracces extends Table
 	static public function HTML_checkboxModiierSup($row, $pkserv, $label, $servAcc, $label2, $quantAcc)
 	{
 		$s = "";
+
+		echo "<pre>" . print_r($row) . "</pre>";
 		foreach ($row as $tab) {
 			if ($tab[$pkserv] == $servAcc)
 				$sel = " checked ";
@@ -61,7 +63,7 @@ class Donneracces extends Table
 
 			$s = $s . "<input type='checkbox' name='$servAcc' id='$servAcc' $sel  value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label>
 			 - <label for='$quantAcc'>Quantité</label><input type='number' name='$quantAcc' id='$quantAcc' size='5' value='$tab[$label2]'>
-			<button class='btn submitServices btn-succes'>Modifier</button>
+			<button class='btn submitServices btn-success'>Modifier</button>
 			<button class='btn delatServices btn-danger'>Suprimer</button>
 			<br>";
 		}
@@ -83,9 +85,9 @@ class Donneracces extends Table
 		$s = "";
 		foreach ($row as $tab) {
 			if ($tab[$pkserv] == $servAcc)
-				$sel = " checked ";
-			else
 				$sel = "";
+			else
+				$sel = "checked";
 
 			$s = $s . "<input type='checkbox' name='$servAcc' id='$servAcc' $sel  value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label>
 			 - <label for='$quantAcc'>Quantité</label><input type='number' name='$quantAcc' id='$quantAcc' size='5' value='$tab[$label2]'>
@@ -133,15 +135,18 @@ class Donneracces extends Table
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+
 	//les service non réservé dans une réservation
-	static public function selectAllServNoReser($res_hotel, $res_id): array
+	static public function selectAllServNoReser($hotel, $res_id): array
 	{
-		$sql = "select * from donneracces,services,reservation,hotel,prestation 
-            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pre_hotel=hot_id and hot_id=:res_hotel
-            and res_id=:res_id and don_service!=ser_id order by ser_libelle";
-/*select * from prestation,services,reservation,donneracces,hotel where pre_hotel=4 and res_id=164 and pre_service=ser_id and res_hotel=hot_id and don_reservation=res_id and don_service=ser_id*/ */
+		$sql = "select * from services,prestation 
+		where pre_service=ser_id and pre_hotel=:hotel and ser_id not in 
+	   (select * from donneracces,prestation,services
+	   where don_reservation=:res_id and don_service=ser_id and ser_id=pre_service and pre_hotel=:hotel) 
+	   order by ser_libelle";
+
 		$stmt = Table::$link->prepare($sql);
-		$stmt->bindValue(":res_hotel", $res_hotel, PDO::PARAM_INT);
+		$stmt->bindValue(":hotel", $hotel, PDO::PARAM_INT);
 		$stmt->bindValue(":res_id", $res_id, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt->fetchAll();
