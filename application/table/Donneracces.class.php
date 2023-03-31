@@ -44,26 +44,54 @@ class Donneracces extends Table
 	 * fonction générique pour générer les balises Checkbox et input d'un champ d'une table
 	 *
 	 * @param string $sql requete sql
-	 * @param string $pk nom du champ pk primaire
+	 * @param string $pkserv nom du champ pk primaire
 	 * @param string $label nom du champ à afficher dans la balise OPTION
-	 * @param integer $id valeur à préselectionner
+	 * @param integer $servAcc valeur à préselectionner
 	 * @param string $label2 nom du champ à afficher dans la balise OPTION
-	 * @param integer $id2 valeur à préselectionner
+	 * @param integer $quantAcc valeur à préselectionner
 	 */
-	static public function HTML_checkbox($sql, $pk, $label, $id, $label2, $id2)
+	static public function HTML_checkboxModiierSup($row, $pkserv, $label, $servAcc, $label2, $quantAcc)
 	{
-		$resultat = self::$link->query($sql);
 		$s = "";
-		foreach ($resultat as $tab) {
-			if ($tab[$pk] == $id)
+		foreach ($row as $tab) {
+			if ($tab[$pkserv] == $servAcc)
 				$sel = " checked ";
 			else
 				$sel = "";
 
-			$s = $s . "<input type='checkbox' name='$id' id='$id' $sel  value='$tab[$label]'><label for='$id'>$tab[$label]</label>
-			 - <label for='$id2'>Quantité</label><input type='number' name='$id2' id='$id2' size='5' value='$tab[$label2]'>
-			<button class='btn submitServices btn-warning'>Ajouter</button>
-			<a class='btn btn-danger' href='hlien(\"donneracces\",\"delete\",\"id\",\"don_id\")'>Supprimer</a><br>";
+			$s = $s . "<input type='checkbox' name='$servAcc' id='$servAcc' $sel  value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label>
+			 - <label for='$quantAcc'>Quantité</label><input type='number' name='$quantAcc' id='$quantAcc' size='5' value='$tab[$label2]'>
+			<button class='btn submitServices btn-succes'>Modifier</button>
+			<button class='btn delatServices btn-danger'>Suprimer</button>
+			<br>";
+		}
+		return $s;
+	}
+
+	/**
+	 * fonction générique pour générer les balises Checkbox et input d'un champ d'une table
+	 *
+	 * @param string $sql requete sql
+	 * @param string $pkserv nom du champ pk primaire
+	 * @param string $label nom du champ à afficher dans la balise OPTION
+	 * @param integer $servAcc valeur à préselectionner
+	 * @param string $label2 nom du champ à afficher dans la balise OPTION
+	 * @param integer $quantAcc valeur à préselectionner
+	 */
+	static public function HTML_checkboxAjouter($row, $pkserv, $label, $servAcc, $label2, $quantAcc)
+	{
+		$s = "";
+		foreach ($row as $tab) {
+			if ($tab[$pkserv] == $servAcc)
+				$sel = " checked ";
+			else
+				$sel = "";
+
+			$s = $s . "<input type='checkbox' name='$servAcc' id='$servAcc' $sel  value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label>
+			 - <label for='$quantAcc'>Quantité</label><input type='number' name='$quantAcc' id='$quantAcc' size='5' value='$tab[$label2]'>
+			<button class='btn submitServices btn-warning'>Modifier</button>
+			
+			<br>";
 		}
 		return $s;
 	}
@@ -103,6 +131,19 @@ class Donneracces extends Table
 		$stmt->bindValue(":res_hotel", $res_hotel, PDO::PARAM_INT);
 		$stmt->bindValue(":res_id", $res_id, PDO::PARAM_INT);
 		$stmt->execute();
-		return $stmt->fachAll();
+		return $stmt->fetchAll();
+	}
+	//les service non réservé dans une réservation
+	static public function selectAllServNoReser($res_hotel, $res_id): array
+	{
+		$sql = "select * from donneracces,services,reservation,hotel,prestation 
+            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pre_hotel=hot_id and hot_id=:res_hotel
+            and res_id=:res_id and don_service!=ser_id order by ser_libelle";
+/*select * from prestation,services,reservation,donneracces,hotel where pre_hotel=4 and res_id=164 and pre_service=ser_id and res_hotel=hot_id and don_reservation=res_id and don_service=ser_id*/ */
+		$stmt = Table::$link->prepare($sql);
+		$stmt->bindValue(":res_hotel", $res_hotel, PDO::PARAM_INT);
+		$stmt->bindValue(":res_id", $res_id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetchAll();
 	}
 }
