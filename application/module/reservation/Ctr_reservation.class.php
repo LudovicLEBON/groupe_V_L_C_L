@@ -27,12 +27,46 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		$data = $u->selectreservation();
 		require $this->gabarit;
 	}
+
+	function a_indexUser()
+	{
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+		$u = new Reservation();
+		$data = $u->selectAllClient($id);
+		require $this->gabarit;
+	}
+
 	function a_indexModerator()
 	{
 		$u = new Reservation();
 		$data = $u->selectAll();
 		require $this->gabarit;
 	}
+
+	//$_GET["id"] : id de l'enregistrement
+	function acreerClient()
+	{
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+		$u = new Reservation();
+		
+			$row = $u->emptyRecord();
+
+		extract($row);
+		require $this->gabarit;
+	}
+
+	//$_GET["id"] : id de l'enregistrement
+	function a_creert()
+	{
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+		$u = new Reservation();
+	
+			$row = $u->emptyRecord();
+
+		extract($row);
+		require $this->gabarit;
+	}
+
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit()
 	{
@@ -47,8 +81,64 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	//$_GET["id"] : id de l'enregistrement
+	function a_editAdmin()
+	{
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+		$u = new Reservation();
+		if ($id > 0)
+			$row = $u->select($id);
+		else
+			$row = $u->emptyRecord();
+
+		extract($row);
+		require $this->gabarit;
+	}
+
+	//$_GET["id"] : id de l'enregistrement
+	function a_editModerator()
+	{
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+		$u = new Reservation();
+		if ($id > 0)
+			$row = $u->select($id);
+		else
+			$row = $u->emptyRecord();
+
+		extract($row);
+		require $this->gabarit;
+	}
+
+	//$_GET["id"] : id de l'enregistrement
+	function a_editUsern()
+	{
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+		$u = new Reservation();
+		if ($id > 0)
+			$row = $u->select($id);
+		else
+			$row = $u->emptyRecord();
+
+		extract($row);
+		require $this->gabarit;
+	}
+
 	//$_POST
 	function a_save()
+	{
+		if (isset($_POST["btSubmit"])) {
+			$u = new Reservation();
+			$u->save($_POST);
+			if ($_POST["res_id"] == 0)
+				$_SESSION["message"][] = "Le nouvel enregistrement Reservation a bien été créé.";
+			else
+				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mis à jour.";
+		}
+		header("location:" . hlien("reservation"));
+	}
+
+	//$_POST
+	function a_saveClient()
 	{
 		if (isset($_POST["btSubmit"])) {
 			$u = new Reservation();

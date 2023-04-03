@@ -11,7 +11,7 @@ class Ctr_database extends Ctr_controleur
 
     public function a_creer()
     {
-        $sql = Database::creer("../document/" . DB_BDD . ".sql");
+        $sql = Database::creer("../document/script_vivehotel_vincent.sql");
         require $this->gabarit;
     }
 
