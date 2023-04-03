@@ -1,0 +1,11 @@
+profil= admin 
+login:mariokart@vivehotel.fr  
+PWD: mariokart 
+
+profil=moderator  
+login: victorhugo@vivehotel.fr  
+PWD: victorhugo 
+
+profil= user  
+login:jeandujardin@gmail.com  
+PWD:jeandujardin 

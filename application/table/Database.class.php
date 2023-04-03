@@ -125,7 +125,8 @@ class Database
             $tab[] = "(null,'$stand')";
         }
         $sql = "insert into standing values " . implode(",", $tab);
-        Table::$link->query($sql);
+        echo "$sql"; 
+        table::$link->query($sql);
         $message .= "<p>génération de $nbsta standing</p>";
         //catégorie des chambres
         $nbcat = 4;

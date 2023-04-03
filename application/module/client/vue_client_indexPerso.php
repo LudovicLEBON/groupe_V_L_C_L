@@ -1,1 +1,1 @@
-<h3>Bivenu <?= $_SESSION["cli_prenom"] ?> sur votre espace personnel</h3>
+<h3 class="text-center">Bienvenu <?= $_SESSION["cli_prenom"] ?> sur votre espace personnel</h3>
