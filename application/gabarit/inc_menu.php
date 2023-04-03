@@ -5,6 +5,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li><a class='nav-link' href='<?= hlien("database", "creer") ?>'>Créer la base de donnée</a></li>
+        <li><a class='nav-link' href='<?= hlien("database", "dataset") ?>'>Dataset</a></li>
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Accueil</span></a>
         </li>
@@ -43,7 +46,7 @@
         <ul class="navbar-nav ml-auto">
           <?php if (isset($_SESSION["cli_id"]) || isset($_SESSION["ind_id"])) { ?>
             <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
-            <li><a class="nav-link" ?><?= $_SESSION["ann_login"] ?></a></li>
+            <li><a class="nav-link" ?><?= $_SESSION["cli_login"] ?></a></li>
           <?php } else { ?>
             <li><a class="nav-link" href='<?= hlien("authentification", "connexionPersonnel") ?>'>Connexion du personnel</a></li>
             <li><a class="nav-link" href='<?= hlien("authentification", "connexionClient") ?>'>Connexion</a></li>

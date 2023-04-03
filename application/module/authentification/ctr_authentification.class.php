@@ -124,7 +124,7 @@ class Ctr_authentification extends Ctr_controleur
             $_SESSION["ind_login"] = $ind_login;
             $_SESSION["ind_profil"] = $ind_profil;
             $_SESSION["message"][] = "bienvenu $ind_prenom $ind_nom.";
-            header("location:" . hlien("_default"));
+            header("location:" . hlien("individu","indexPerso"));
         } else {
             $ind_login = "";
 
@@ -168,7 +168,7 @@ class Ctr_authentification extends Ctr_controleur
             $_SESSION["cli_login"] = $cli_login;
             $_SESSION["cli_profil"] = $cli_profil;
             $_SESSION["message"][] = "bienvenu $cli_prenom $cli_nom.";
-            header("location:" . hlien("_default"));
+            header("location:" . hlien("client","indexPerso"));
         } else {
 
             $cli_login = "";

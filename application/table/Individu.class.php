@@ -35,4 +35,5 @@ class Individu extends Table
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
+
 }

@@ -1,1 +1,1 @@
-<h3>Bienvenu <?= mhe($row['ind_profil']) ?> sur votre espace de travail</h3>
+<h3>Bienvenu <?= $_SESSION["ind_prenom"] ?> sur votre espace de travail</h3>
