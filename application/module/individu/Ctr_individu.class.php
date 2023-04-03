@@ -20,6 +20,13 @@ class Ctr_individu extends Ctr_controleur implements I_crud
 		$data = $u->selectAllProfHot();
 		require $this->gabarit;
 	}
+	function a_indexPerso()
+	{
+		$u = new Individu();
+		$data = $u->selectAllProfHot();
+		require $this->gabarit;
+	}
+
 
 	//edition d'un individu
 	//$_GET["id"] : id de l'enregistrement
