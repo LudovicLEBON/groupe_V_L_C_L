@@ -17,7 +17,7 @@ class Ctr_database extends Ctr_controleur
 
     public function a_dataset()
     {
-        $message = Database::dataset();
+        $message = Database::datasetVivehotel();
         require $this->gabarit;
     }
 }
