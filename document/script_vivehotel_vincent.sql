@@ -122,7 +122,8 @@ create table
         res_etat varchar(100) not null,
         res_client int not null,
         res_hotel int not null,
-        res_chambre int not null
+        res_chambre int not null,
+        res_commende varchar(500)
     ) engine = innodb;
 
 -- création table services

@@ -119,28 +119,29 @@ class Database
 
         //génération du standing des hotels:
         $nbsta = 5;
-        $tab = [];
+        $tabsta = [];
         for ($i = 1; $i <= $nbsta; $i++) {
             $stand = getStanding($i);
-            $tab[] = "(null,'$stand')";
+            $tabsta[] = "(null,'$stand')";
         }
-        $sql = "insert into standing values " . implode(",", $tab);
+        $sql = "insert into standing values " . implode(",", $tabsta);
         echo "$sql";
         table::$link->query($sql);
         $message .= "<p>génération de $nbsta standing</p>";
+
         //catégorie des chambres
         $nbcat = 4;
-        $tab = [];
+        $tabcat = [];
         for ($i = 1; $i <= $nbcat; $i++) {
             $cat = getCategorie($i);
-            $tab[] = "(null,'$cat')";
+            $tabcat[] = "(null,'$cat')";
         }
-        $sql = "insert into categorie values " . implode(",", $tab);
+        $sql = "insert into categorie values " . implode(",", $tabcat);
         Table::$link->query($sql);
         $message .= "<p>génération de $nbcat catégories</p>";
 
         //génération des services:
-        $tab = [];
+        $tabser = [];
         $services = [
             'Piscine',
             'Bien être',
@@ -156,14 +157,14 @@ class Database
         ];
 
         for ($i = 0; $i < count($services); $i++) {
-            $tab[] = "(null,'$services[$i]')";
+            $tabser[] = "(null,'$services[$i]')";
         }
-        $sql = "insert into services values " . implode(",", $tab);
+        $sql = "insert into services values " . implode(",", $tabser);
         Table::$link->query($sql);
         $message .= "<p>génération des services</p>";
 
         //génération des tarifs:
-        $tab = [];
+        $tabtar = [];
         $t = [
             1 => [50, 60, 70, 80],
             2 => [70, 80, 90, 100],
@@ -175,17 +176,17 @@ class Database
             for ($j = 1; $j <= $nbcat; $j++) {
                 $c = $j - 1;
                 $tar = $t[$i][$c];
-                $tab[] = "(null,'$i','$j','$tar')";
+                $tabtar[] = "(null,'$i','$j','$tar')";
             }
         }
-        $sql = "insert into tarifer values " . implode(",", $tab);
+        $sql = "insert into tarifer values " . implode(",", $tabtar);
         Table::$link->query($sql);
         $message .= "<p>génération des Tarifs de l'hotel</p>";
 
         //génération des hotel : 50 hotels
 
         $nbh = 50;
-        $tab = [];
+        $tabhot = [];
         for ($i = 1; $i <= $nbh; $i++) {
             $getHstanding = mt_rand(1, 5);
             $standing[] = $getHstanding;
@@ -193,12 +194,12 @@ class Database
             $longi = mt_rand(-180, 180);
             $lati = mt_rand(-90, 90);
             $code = mt_rand(10000, 99900);
-            $tab[] = "(null,'nom$i','0900000001',
+            $tabhot[] = "(null,'nom$i','0900000001',
                    '$i rue de l\'hotel $code Vivehotel','$longi','$lati','photo $i',
                    'descriptif de l\'hotel $i',
                    '$getStatut','$getHstanding')";
         }
-        $sql = "insert into hotel values " . implode(",", $tab);
+        $sql = "insert into hotel values " . implode(",", $tabhot);
         Table::$link->query($sql);
         $message .= "<p>génération de $nbh hotel</p>";
 
@@ -206,46 +207,46 @@ class Database
         //génération des admin  
 
         $nbg = 49;
-        $tab = [];
+        $tabadm = [];
         for ($i = 1; $i <= $nbg; $i++) {
 
             $pwd = "pwd$i";
             $pwd = password_hash($pwd, PASSWORD_DEFAULT);
-            $tab[] = "(null,'nom_gérant$i','prenom_gérant$i','nom$i.prenom$i@vivehotel.fr','$pwd','4','$i')";
+            $tabadm[] = "(null,'nom_gérant$i','prenom_gérant$i','nom$i.prenom$i@vivehotel.fr','$pwd','4','$i')";
         }
         $pwd = password_hash("mariokart", PASSWORD_DEFAULT);
-        $tab[] = "(null,'Kart','Mario','mariokart@vivehotel.fr','$pwd','4','50')";
-        $sql = "insert into individu values " . implode(",", $tab);
+        $tabadm[] = "(null,'Kart','Mario','mariokart@vivehotel.fr','$pwd','4','50')";
+        $sql = "insert into individu values " . implode(",", $tabadm);
         Table::$link->query($sql);
         $message .= "<p>génération de $nbg gérants</p>";
 
         //génération des individus personnels
 
         $nbperso = 4;
-        $tab = [];
+        $tabmod = [];
         for ($i = 1; $i <= 50; $i++) {
             for ($j = 1; $j <= $nbperso; $j++) {
                 $pwd = "pwd$j";
                 $pwd = password_hash($pwd, PASSWORD_DEFAULT);
-                $tab[] = "(null,'nom_perso$j','prenom_perso$j','nom$j.prenom$j@vivehotel.fr','$pwd','3','$i')";
+                $tabmod[] = "(null,'nom_perso$j','prenom_perso$j','nom$j.prenom$j@vivehotel.fr','$pwd','3','$i')";
             }
         }
         $pwd = password_hash("victorhugo", PASSWORD_DEFAULT);
-        $tab[] = "(null,'Hugo','Victor','victorhugo@vivehotel.fr','$pwd','3','12')";
-        $sql = "insert into individu values " . implode(",", $tab);
+        $tabmod[] = "(null,'Hugo','Victor','victorhugo@vivehotel.fr','$pwd','3','12')";
+        $sql = "insert into individu values " . implode(",", $tabmod);
         Table::$link->query($sql);
         $message .= "<p>génération de $nbperso personnels par hotel</p>";
 
         //génération des individus SRC 
 
         $nbsrc = 10;
-        $tab = [];
+        $tabsrc = [];
         for ($i = 1; $i <= $nbsrc; $i++) {
             $pwd = "pwd$i";
             $pwd = password_hash($pwd, PASSWORD_DEFAULT);
-            $tab[] = "(null,'nom_src$i','prenom_src$i','nom$i.prenom$i@vivehotel.fr','$pwd','3',null)";
+            $tabsrc[] = "(null,'nom_src$i','prenom_src$i','nom$i.prenom$i@vivehotel.fr','$pwd','3',null)";
         }
-        $sql = "insert into individu values " . implode(",", $tab);
+        $sql = "insert into individu values " . implode(",", $tabsrc);
         Table::$link->query($sql);
         $message .= "<p>génération de $nbsrc individus SRC</p>";
 
@@ -253,21 +254,21 @@ class Database
         //génération des clients   
 
         $nbcl = 500;
-        $tab = [];
+        $tabcli = [];
         for ($i = 1; $i <= $nbcl; $i++) {
             $pwd = "pwd$i";
             $pwd = password_hash($pwd, PASSWORD_DEFAULT);
-            $tab[] = "(null,'nom$i','prenom$i','nom$i.prenom$i@login.fr','$pwd','2')";
+            $tabcli[] = "(null,'nom$i','prenom$i','nom$i.prenom$i@login.fr','$pwd','2')";
         }
         $pwd = password_hash("jeandujardin", PASSWORD_DEFAULT);
-        $tab[] = "(null,'Dujardin','Jean','jeandujardin@gmail.com','$pwd','2')";
-        $sql = "insert into client values " . implode(",", $tab);
+        $tabcli[] = "(null,'Dujardin','Jean','jeandujardin@gmail.com','$pwd','2')";
+        $sql = "insert into client values " . implode(",", $tabcli);
         Table::$link->query($sql);
         $message .= "<p>génération de $nbcl clients</p>";
 
         //génération des chambres :
         $nbh = 50;
-        $tab = [];
+        $tabcha = [];
         //on parcoure les hotels pour attribuer les chambres
         for ($i = 0; $i < $nbh; $i++) {
             $nbch = mt_rand(10, 50);
@@ -320,20 +321,20 @@ class Database
                 $stat[] = $statut;
                 $x = $i + 1;
 
-                $tab[] = "(null,'chambre $j hotel $x','photo chambre $j - h $x',
+                $tabcha[] = "(null,'chambre $j hotel $x','photo chambre $j - h $x',
                 'descriptif de la chambre $j de hotel $x','$statut','$surface','$lit',
                 '$jacuzzi','$balcon','$minibar','$wifi','$coffre','$vue',
                 '$categorie','$x')";
             }
         }
-        $sql = "insert into chambre values " . implode(",", $tab);
+        $sql = "insert into chambre values " . implode(",", $tabcha);
         Table::$link->query($sql);
         $message .= "<p>génération des chambre des hotels</p>";
 
         //génération des prestations:
 
         $service = range(1, 11);
-        $tab = [];
+        $tabpre = [];
 
         for ($i = 1; $i <= $nbh; $i++) {
             shuffle($service);
@@ -341,17 +342,18 @@ class Database
             for ($j = 0; $j <= $s; $j++) {
                 $ss = $service[$j];
                 $prix = mt_rand(0, 25);
-                $tab[] = "(null,'$ss','$i','$prix')";
+                $tabpre[] = "(null,'$ss','$i','$prix')";
             }
         }
-        $sql = "insert into prestation values " . implode(",", $tab);
+        $sql = "insert into prestation values " . implode(",", $tabpre);
         Table::$link->query($sql);
         $message .= "<p>génération des services des hotels avec le prix à l'unité</p>";
 
         //génération des réservations et des services associers
 
         $nbcl = 500;
-        $tab = [];
+        $tabres = [];
+        $tabd = [];
         for ($i = 1; $i <= $nbcl; $i++) {
             $dc = mktime(mt_rand(8, 23), mt_rand(0, 59), 0, mt_rand(1, 12), mt_rand(1, 30), 2023);
             $datec = date('Y-m-d H:i:s', $dc);
@@ -391,21 +393,20 @@ class Database
             }
             $pHT = $prixS;
             $etat = getEtatRes(mt_rand(1, 4));
-            $tab[] = "(null,'$datec','$datem','$datedb','$datef',
+            $tabres[] = "(null,'$datec','$datem','$datedb','$datef',
             '$pHT','$etat','$i','$hot','$chambre')";
         }
-        $sql = "insert into reservation values " . implode(",", $tab);
-        Table::$link->query($sql);
-        $message .= "<p>génération de $nbh reservation</p>";
+        $sqlres = "insert into reservation values " . implode(',', $tabres);
+        Table::$link->query($sqlres);
+        $message .= "<p>génération de $nbcl reservations</p>";
         //--------------------------------------------------------
         //génération des donner acces:
 
 
-        $sql = "insert into donnerAcces values " . implode(",", $tabd);
+        $sqldon = "insert into donnerAcces values " . implode(',', $tabd);
 
-        Table::$link->query($sql);
+        Table::$link->query($sqldon);
         $message .= "<p>génération des accès aux services</p>";
-
 
         return $message;
     }
