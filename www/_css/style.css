@@ -24,6 +24,11 @@ img.logo {
 	width:250px;
 }
 
-label {
-	font-weight:bold;
+h4 {
+	text-align: center;
+	color: rgb(184, 149, 10);
+}
+
+forme {
+	text-align: center;
 }
