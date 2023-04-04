@@ -53,6 +53,7 @@
             <li><a class="nav-link" href='<?= hlien("authentification", "connexionPersonnel") ?>'>Connexion du personnel</a></li>
             <li><a class="nav-link" href='<?= hlien("authentification", "connexionClient") ?>'>Connexion</a></li>
             <li><a class="nav-link" href='<?= hlien("authentification", "inscriptionClient") ?>'>Inscription</a></li>
+            <li><a class="nav-link" href='<?= hlien("authentification", "inscriptionPersonnel") ?>'>Inscription du personnel</a></li>
           <?php } ?>
         </ul>
     </div>

@@ -31,9 +31,8 @@ class Individu extends Table
 	//affiche toute les information d'un individu son profil et sont hôtel d'affectation
 	static function selectAllProfHot(): array
 	{
-		$sql = "select * from individu,hotel,profil where ind_hotel=hot_id and ind_profil=pro_id";
+		$sql = "select * from individu,hotel,profil where ind_hotel=hot_id and ind_profil=pro_id order by ind_login,pro_libelle";
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
-
 }

@@ -125,7 +125,7 @@ class Database
             $tab[] = "(null,'$stand')";
         }
         $sql = "insert into standing values " . implode(",", $tab);
-        echo "$sql"; 
+        echo "$sql";
         table::$link->query($sql);
         $message .= "<p>génération de $nbsta standing</p>";
         //catégorie des chambres
@@ -205,7 +205,7 @@ class Database
 
         //génération des admin  
 
-        $nbg = 50;
+        $nbg = 49;
         $tab = [];
         for ($i = 1; $i <= $nbg; $i++) {
 
@@ -213,6 +213,8 @@ class Database
             $pwd = password_hash($pwd, PASSWORD_DEFAULT);
             $tab[] = "(null,'nom_gérant$i','prenom_gérant$i','nom$i.prenom$i@vivehotel.fr','$pwd','4','$i')";
         }
+        $pwd = password_hash("mariokart", PASSWORD_DEFAULT);
+        $tab[] = "(null,'Kart','Mario','mariokart@vivehotel.fr','$pwd','4','50')";
         $sql = "insert into individu values " . implode(",", $tab);
         Table::$link->query($sql);
         $message .= "<p>génération de $nbg gérants</p>";
@@ -225,9 +227,11 @@ class Database
             for ($j = 1; $j <= $nbperso; $j++) {
                 $pwd = "pwd$j";
                 $pwd = password_hash($pwd, PASSWORD_DEFAULT);
-                $tab[] = "(null,'nom_perso$j','prenom_perso$j','nom$j.prenom$j@vivehotel$i.fri','$pwd','3','$i')";
+                $tab[] = "(null,'nom_perso$j','prenom_perso$j','nom$j.prenom$j@vivehotel.fr','$pwd','3','$i')";
             }
         }
+        $pwd = password_hash("victorhugo", PASSWORD_DEFAULT);
+        $tab[] = "(null,'Hugo','Victor','victorhugo@vivehotel.fr','$pwd','3','12')";
         $sql = "insert into individu values " . implode(",", $tab);
         Table::$link->query($sql);
         $message .= "<p>génération de $nbperso personnels par hotel</p>";
@@ -255,6 +259,8 @@ class Database
             $pwd = password_hash($pwd, PASSWORD_DEFAULT);
             $tab[] = "(null,'nom$i','prenom$i','nom$i.prenom$i@login.fr','$pwd','2')";
         }
+        $pwd = password_hash("jeandujardin", PASSWORD_DEFAULT);
+        $tab[] = "(null,'Dujardin','Jean','jeandujardin@gmail.com','$pwd','2')";
         $sql = "insert into client values " . implode(",", $tab);
         Table::$link->query($sql);
         $message .= "<p>génération de $nbcl clients</p>";

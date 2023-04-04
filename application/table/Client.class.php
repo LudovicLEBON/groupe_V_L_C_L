@@ -31,7 +31,7 @@ class Client extends Table
 	//affiche toute les information d'un individu son profil et sont hôtel d'affectation
 	static function selectAllProf(): array
 	{
-		$sql = "select * from client,profil where cli_profil=pro_id";
+		$sql = "select * from client,profil where cli_profil=pro_id order by cli_login,pro_libelle";
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
