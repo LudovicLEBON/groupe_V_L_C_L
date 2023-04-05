@@ -351,7 +351,7 @@ class Database
 
         //génération des réservations et des services associers
 
-        $nbcl = 500;
+        $nbcl = 501;
         $tabres = [];
         $tabd = [];
         for ($i = 1; $i <= $nbcl; $i++) {
@@ -394,7 +394,7 @@ class Database
             $pHT = $prixS;
             $etat = getEtatRes(mt_rand(1, 4));
             $tabres[] = "(null,'$datec','$datem','$datedb','$datef',
-            '$pHT','$etat','$i','$hot','$chambre')";
+            '$pHT','$etat','$i','$hot','$chambre',' ')";
         }
         $sqlres = "insert into reservation values " . implode(',', $tabres);
         Table::$link->query($sqlres);
