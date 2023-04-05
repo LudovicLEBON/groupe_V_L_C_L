@@ -155,6 +155,22 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		header("location:" . $redirection);
 	}
 
+	//$_POST des réservation éditées par un client
+	function a_saveEditClient()
+	{
+		if (isset($_POST["btSubmit"])) {
+			$_POST["res_date_maj"] = date("Y-m-d H:i");
+			$_POST["res_etat"] = $_POST["res_etat"] == "annulée" ? "annulée" : "initialisée";
+			$u = new Reservation();
+			$u->save($_POST);
+			if ($_POST["res_id"] == 0)
+				$_SESSION["message"][] = "Le nouvel enregistrement Reservation a bien été créé.";
+			else
+				$_SESSION["message"][] = "L'enregistrement des modification de la réservation a bien été mis à jour.";
+		}
+		header("location:" . hlien("reservation", "indexUser"));
+	}
+
 	//$_POST des réservation créées par un client
 	function a_saveClient()
 	{

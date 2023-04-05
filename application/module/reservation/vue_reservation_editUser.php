@@ -1,6 +1,5 @@
 <form method="post" action="<?= hlien("reservation", "saveEditClient") ?>">
     <input type="hidden" name="res_id" id="res_id" value="<?= $id ?>" />
-    <input id='res_date_maj' name='res_date_maj' type='hidden' size='50' value='<?= date("Y-m-d H:i") ?>' class='form-control' />
 
     <div class='form-group'>
         <label for='res_date_debut_sejour'>Date de debut de sejour</label>
@@ -32,11 +31,11 @@
     </textarea>
     </div>
     <div class='form-group'>
-        <label for='res_etat'>Etat</label>
-        <?php $etat = ["initialisée", "validée", "en attente", "annulée"]; ?>
+        <label for='res_etat'>Etat: sélectionner annuler pour annuler la résevation</label>
+        <?php $etat = [" ", "annulée"]; ?>
         <select id='res_etat' name='res_etat' class='form-control'>
             <?php foreach ($etat as $key) {
-                $selected = ($key == $res_etat) ? "selected" : ""; ?>
+                $selected = ($key == " ") ? "selected" : ""; ?>
                 <option value="<?= $key ?>" <?= $selected ?>><?= $key ?></option>
             <?php } ?>
         </select>
