@@ -19,8 +19,8 @@
     </div>
     <div class='form-group'>
         <label for='res_client'>Client</label>
-        <select id='res_client' name='res_client' class='form-control'>
-            <?= Table::HTMLoptions("select * from client order by cli_login", "cli_id", "cli_login", $res_client) ?>
+        <input id='res_client' name='res_client' class='form-control'>
+        <?= Table::HTMLoptions("select * from client order by cli_login", "cli_id", "cli_login", $res_client) ?>
         </select>
     </div>
     <div class='form-group'>

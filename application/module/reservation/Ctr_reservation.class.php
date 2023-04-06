@@ -44,7 +44,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	}
 
 	//$_GET["id"] : id de l'enregistrement
-	function acreerClient()
+	function a_creerClient()
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Reservation();
@@ -56,7 +56,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	}
 
 	//$_GET["id"] : id de l'enregistrement
-	function a_creert()
+	function a_creer()
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Reservation();
@@ -110,7 +110,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	}
 
 	//$_GET["id"] : id de l'enregistrement
-	function a_editUsern()
+	function a_editUser()
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Reservation();
@@ -134,13 +134,16 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 			else
 				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mis à jour.";
 		}
-		header("location:" . hlien("reservation"));
+		$redirection = $_SESSION["ind_profil"] == "3" ? hlien("reservation", "indexModerator") :  hlien("reservation", "indexAdmin");
+		header("location:" . $redirection);
 	}
 
-	//$_POST
-	function a_saveClient()
+	//$_POST des réservation créées par un modérateur ou un admin
+	function a_saveAdMod()
 	{
 		if (isset($_POST["btSubmit"])) {
+			$_POST["res_date_maj"] = date("Y-m-d H:i");
+			$_POST["res_chambre"] = 0;
 			$u = new Reservation();
 			$u->save($_POST);
 			if ($_POST["res_id"] == 0)
@@ -148,7 +151,43 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 			else
 				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mis à jour.";
 		}
-		header("location:" . hlien("reservation"));
+		$redirection = $_SESSION["ind_profil"] == "3" ? hlien("reservation", "indexModerator") :  hlien("reservation", "indexAdmin");
+		header("location:" . $redirection);
+	}
+
+	//$_POST des réservation éditées par un client
+	function a_saveEditClient()
+	{
+		if (isset($_POST["btSubmit"])) {
+			$_POST["res_date_maj"] = date("Y-m-d H:i");
+			$_POST["res_etat"] = $_POST["res_etat"] == "annulée" ? "annulée" : "initialisée";
+			$u = new Reservation();
+			$u->save($_POST);
+			if ($_POST["res_id"] == 0)
+				$_SESSION["message"][] = "Le nouvel enregistrement Reservation a bien été créé.";
+			else
+				$_SESSION["message"][] = "L'enregistrement des modification de la réservation a bien été mis à jour.";
+		}
+		header("location:" . hlien("reservation", "indexUser"));
+	}
+
+	//$_POST des réservation créées par un client
+	function a_saveClient()
+	{
+		if (isset($_POST["btSubmit"])) {
+			$_POST["res_date_maj"] = date("Y-m-d H:i");
+			$_POST["res_client"] = $_SESSION["cli_id"];
+			$_POST["res_chambre"] = 0;
+			$_POST["res_prix_total"] = 0;
+			$_POST["res_etat"] = "initialisée";
+			$u = new Reservation();
+			$u->save($_POST);
+			if ($_POST["res_id"] == 0)
+				$_SESSION["message"][] = "Le nouvel enregistrement Reservation a bien été créé.";
+			else
+				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mis à jour.";
+		}
+		header("location:" . hlien("reservation", "indexUser"));
 	}
 
 

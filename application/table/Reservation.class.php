@@ -1,9 +1,12 @@
 <?php
+
 /**
 Classe créé par le générateur.
-*/
-class Reservation extends Table {
-	public function __construct() {
+ */
+class Reservation extends Table
+{
+	public function __construct()
+	{
 		parent::__construct("reservation", "res_id");
 	}
 	public function selectReservation(): array
@@ -38,6 +41,4 @@ class Reservation extends Table {
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
-
-
 }

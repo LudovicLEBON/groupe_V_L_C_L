@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <h2 class="text-center">Mes réservations </h2>
 <p><a class="btn btn-primary" href="<?= hlien("reservation", "edit", "id", 0) ?>">Nouvelle reservation</a></p>
+=======
+<h2>reservation</h2>
+<p><a class="btn btn-primary" href="<?= hlien("reservation", "creerClient", "id", 0) ?>">Nouvelle reservation</a></p>
+>>>>>>> 53911cb42c0dc9cdbc9cb94be1ed5ce2637a5350
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>

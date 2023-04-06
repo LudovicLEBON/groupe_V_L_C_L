@@ -36,7 +36,7 @@ class Hotel extends Table
 			else
 				$sel = "";
 
-			$s = $s . "<option $sel value='$tab[$pk]'>$tab[$label] - $tab[$label2]</option>";
+			$s = $s . "<option $sel value='$tab[$pk]'>$tab[$label] - Hôtel $tab[$label2]</option>";
 		}
 		return $s;
 	}
