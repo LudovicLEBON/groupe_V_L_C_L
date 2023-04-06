@@ -11,7 +11,7 @@
 
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Accueil</span></a>
+          <a class="nav-link active" aria-current="page" href="index.php">accueil</span></a>
         </li>
 
         <?php if (isset($_SESSION["ind_id"]) and $_SESSION["ind_profil"] == 4) { ?>
@@ -41,7 +41,10 @@
           <li><a class='nav-link' href='<?= hlien("tarifer", "indexModerator") ?>'>Tarifer</a></li>
           <li><a class='nav-link' href='<?= hlien("donneracces", "index") ?>'>Donneracces</a></li>
         <?php } ?>
-
+        <?php if (isset($_SESSION["cli_id"]) and $_SESSION["cli_profil"] == 2) { ?>
+          <li><a class='nav-link' href='<?= hlien("reservation", "indexUser") ?>'>Reservation</a></li>
+          <li><a class='nav-link' href='<?= hlien("client", "indexPerso") ?>'>espace personnel</a></li>
+        <?php } ?>
 
 
 

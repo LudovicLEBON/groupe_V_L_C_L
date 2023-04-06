@@ -48,8 +48,8 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Reservation();
-		
-			$row = $u->emptyRecord();
+
+		$row = $u->emptyRecord();
 
 		extract($row);
 		require $this->gabarit;
@@ -60,8 +60,8 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Reservation();
-	
-			$row = $u->emptyRecord();
+
+		$row = $u->emptyRecord();
 
 		extract($row);
 		require $this->gabarit;

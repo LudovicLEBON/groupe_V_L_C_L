@@ -1,1 +1,1 @@
-<h3 class="text-center">Bienvenu <?= $_SESSION["ind_prenom"] ?> sur votre espace de travail</h3>
+<h3 class="text-center">Bienvenue <?= $_SESSION["ind_prenom"] ?> sur votre espace de travail</h3>

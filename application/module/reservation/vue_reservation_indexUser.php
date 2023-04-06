@@ -1,4 +1,4 @@
-<h2>reservation</h2>
+<h2 class="text-center">Mes réservations </h2>
 <p><a class="btn btn-primary" href="<?= hlien("reservation", "edit", "id", 0) ?>">Nouvelle reservation</a></p>
 <table class="table table-striped table-bordered table-hover">
     <thead>

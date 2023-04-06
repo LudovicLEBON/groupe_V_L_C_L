@@ -44,6 +44,10 @@
     </div>
 
     </div>
+    <div class="form-group">
+        <label for="res_commende">précision commande</label>
+        <input type="text" name="res_commende" id="res_commende" size=50"" value="<?= mhe($res_commende) ?>" class="form_control">
+    </div>
     <div class='form-group'>
         <label for='res_prix_total'>Prix_total</label>
         <input id='res_prix_total' name='res_prix_total' type="floor" step="0.01" min="0.01" size='50' value='<?= mhe($res_prix_total) ?>' class='form-control' />

@@ -17,7 +17,7 @@
         <label for='res_date_fin_sejour'>Date_fin_sejour</label>
         <input id='res_date_fin_sejour' name='res_date_fin_sejour' type='date' size='50' value='<?= mhe($res_date_fin_sejour) ?>' class='form-control' />
     </div>
-    
+
     <div class='form-group'>
         <label for='res_hotel'>Hotel</label>
         <input readonly id='res_hotel' name='res_hotel' type="text" size="50" value="hotel <?= $res_hotel ?>" class='form-control' />
@@ -39,10 +39,14 @@
     </div>
 
     </div>
+    <div class="form-group">
+        <label for="res_commende">précision commande</label>
+        <input type="text" name="res_commende" id="res_commende" size=50"" value="<?= mhe($res_commende) ?>" class="form_control">
+    </div>
     <div class='form-group'>
         <label for='res_prix_total'>Prix_total</label>
         <input readonly id='res_prix_total' name='res_prix_total' type="floor" step="0.01" min="0.01" size='50' value='<?= mhe($res_prix_total) ?>' class='form-control' />
     </div>
-    
+
     <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
 </form>
