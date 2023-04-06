@@ -1,6 +1,5 @@
 <form method="post" action="<?= hlien("reservation", "saveClient") ?>">
     <input type="hidden" name="res_id" id="res_id" value="<?= $id ?>" />
-
     <div class='form-group'>
         <label for='res_date_creation'>Date de creation</label>
         <input readonly id='res_date_creation' name='res_date_creation' type="datetime" size='50' value='<?= date("Y-m-d H:i") ?>' class='form-control' />
@@ -31,15 +30,6 @@
             ) ?>
         </select>
     </div>
-<<<<<<< HEAD
-
-    </div>
-    <div class="form-group">
-        <label for="res_commende">précision commande</label>
-        <input type="text" name="res_commende" id="res_commende" size=50"" value="<?= mhe($res_commende) ?>" class="form_control">
-    </div>
-=======
->>>>>>> 53911cb42c0dc9cdbc9cb94be1ed5ce2637a5350
     <div class='form-group'>
         <label for='res_commende'>Listez vos critaires de la chambre (type de lit, taille, catégorie...)</label>
         <textarea id='res_commende' name='res_commende' rows="3" class='form-control'>
@@ -47,8 +37,5 @@
           
         </textarea>
     </div>
-
-
-
     <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
 </form>

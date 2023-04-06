@@ -18,10 +18,9 @@
         <input id='res_date_fin_sejour' name='res_date_fin_sejour' type='date' size='50' value='<?= mhe($res_date_fin_sejour) ?>' class='form-control' />
     </div>
     <div class='form-group'>
-        <label for='res_client'>Client</label>
-        <input id='res_client' name='res_client' class='form-control'>
-        <?= Table::HTMLoptions("select * from client order by cli_login", "cli_id", "cli_login", $res_client) ?>
-        </select>
+        <label for='res_client'>Client</label><?php $cli = (new Client)->select($res_client) ?>
+        <input disabled type="text" value="<?= $cli["cli_login"] ?>" id='res_client' name='res_client' class='form-control'>
+
     </div>
     <div class='form-group'>
         <label for='res_hotel'>Hotel</label>

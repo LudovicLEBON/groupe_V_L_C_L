@@ -35,7 +35,7 @@
     				<td><a class="btn btn-info" href="<?= hlien("donneracces", "editServReser", "hotel", $row["res_hotel"], "id", $row["res_id"]) ?>">Modifier</a></td>
     				<td><?= mhe($row['res_prix_total']) ?></td>
     				<td><?= mhe($row['res_etat']) ?></td>
-    				<td><a class="btn btn-warning" href="<?= hlien("reservation", "edit", "id", $row["res_id"]) ?>">Modifier</a></td>
+    				<td><a class="btn btn-warning" href="<?= hlien("reservation", "editAdmin", "id", $row["res_id"]) ?>">Modifier</a></td>
     				<td><a class="btn btn-danger" href="<?= hlien("reservation", "delete", "id", $row["res_id"]) ?>">Supprimer</a></td>
     			</tr>
     		<?php } ?>
