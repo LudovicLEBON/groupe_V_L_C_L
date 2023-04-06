@@ -1,13 +1,16 @@
 <h2>Bienvenue sur le site du groupe hôtelier ViveHotel !</h2>
 
+<table>
+    <td>
 <p><img src="_images/France.jpg">
-<h6 style="color:midnightblue">30 hôtels répartis en France</h6>
+<h6 style="color:rgb(220, 188, 11)">30 hôtels répartis en France</h6>
 </p><br>
-
+    </td>
 <p>
+    <td>
     <!--Formulaire de réservation-->
-    <h4>Réservez ici</h4><br>
-    <forme method="post">
+    <form method="post">
+    <h4>Réservez ici : </h4><br>
         <p>
             <label for="datearrivee">Date d'arrivée : </label>
             <input type="date" id="datearrivee" name="datearrivee" required>
@@ -19,12 +22,14 @@
         <p>
             <input type="submit" name="btsubmit" value="Lancer la recherche">
         </p>
-    </forme>
+    </form>
+    </td>
+    </table>
 </p><br>
 
 <p><img src="_images/services.jpg">
-<h6 style="color:midnightblue">Des services pour tous les goûts</h6>
+<h6 style="color:rgb(220, 188, 11)">Des services pour tous les goûts</h6>
 </p><br>
 <p><img src="_images/room4.jpg">
-<h6 style="color:midnightblue">Sentez-vous y comme chez vous !</h6>
+<h6 style="color:rgb(220, 188, 11)">Sentez-vous y comme chez vous !</h6>
 </p><br>
