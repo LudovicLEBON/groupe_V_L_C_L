@@ -1,3 +1,4 @@
+<h2>Modification de la réservation</h2>
 <form method="post" action="<?= hlien("reservation", "saveEditClient") ?>">
     <input type="hidden" name="res_id" id="res_id" value="<?= $id ?>" />
 
@@ -26,13 +27,8 @@
     <div class='form-group'>
         <label for='res_commende'>Listez vos critaires de la chambre (type de lit, taille, catégorie...)</label>
         <textarea id='res_commende' name='res_commende' rows="3" class='form-control'>
-      <?= mhe($res_commende) ?>
-      
+      <?= mhe($res_commende) ?>  
     </textarea>
-    </div>
-    <div class="form-group">
-        <label for="res_commende">précision commande</label>
-        <input type="text" name="res_commende" id="res_commende" size=50"" value="<?= mhe($res_commende) ?>" class="form_control">
     </div>
     <div class='form-group'>
         <label for='res_etat'>Etat: sélectionner annuler pour annuler la résevation</label>
@@ -44,9 +40,5 @@
             <?php } ?>
         </select>
     </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 53911cb42c0dc9cdbc9cb94be1ed5ce2637a5350
     <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
 </form>

@@ -1,13 +1,10 @@
+<h2>Modification de la réservation n°<?= $id ?> </h2>
 <form method="post" action="<?= hlien("reservation", "save") ?>">
     <input type="hidden" name="res_id" id="res_id" value="<?= $id ?>" />
 
     <div class='form-group'>
-        <label for='res_date_creation'>Date_creation</label>
-        <input readonly id='res_date_creation' name='res_date_creation' type="datetime" size='50' value='<?= mhe($res_date_creation) ?>' class='form-control' />
-    </div>
-    <div class='form-group'>
         <label for='res_date_maj'>Date_maj</label>
-        <input id='res_date_maj' name='res_date_maj' type='datetime' size='50' value='<?= date("Y-m-d H:i") ?>' class='form-control' />
+        <input readonly id='res_date_maj' name='res_date_maj' type='datetime' size='50' value='<?= date("Y-m-d H:i") ?>' class='form-control' />
     </div>
     <div class='form-group'>
         <label for='res_date_debut_sejour'>Date_debut_sejour</label>
@@ -18,15 +15,18 @@
         <input id='res_date_fin_sejour' name='res_date_fin_sejour' type='date' size='50' value='<?= mhe($res_date_fin_sejour) ?>' class='form-control' />
     </div>
     <div class='form-group'>
-        <label for='res_client'>Client</label>
-        <select id='res_client' name='res_client' class='form-control'>
-            <?= Table::HTMLoptions("select * from client order by cli_login", "cli_id", "cli_login", $res_client) ?>
-        </select>
+        <label for='res_client'>Client</label><?php $cli = (new Client)->select($res_client) ?>
+        <p id='res_client' class='form-control'> <?= $cli["cli_login"] ?></p>
     </div>
     <div class='form-group'>
         <label for='res_hotel'>Hotel</label>
-        <input readonly id='res_hotel' name='res_hotel' type="text" size="50" value="hotel <?= $res_hotel ?>" class='form-control' />
-
+        <p id='res_hotel' class='form-control'>hotel <?= $res_hotel ?> </p>
+    </div>
+    <div class="form-group">
+        <label for='res_commende'>Listez vos critaires de la chambre (type de lit, taille, catégorie...)</label>
+        <textarea id='res_commende' name='res_commende' rows="3" class='form-control'>
+      <?= mhe($res_commende) ?>  
+    </textarea>
     </div>
     <div class='form-group'>
         <label for='res_chambre'>Chambre</label>
@@ -41,12 +41,6 @@
                 $res_chambre
             ) ?>
         </select>
-    </div>
-
-    </div>
-    <div class="form-group">
-        <label for="res_commende">précision commande</label>
-        <input type="text" name="res_commende" id="res_commende" size=50"" value="<?= mhe($res_commende) ?>" class="form_control">
     </div>
     <div class='form-group'>
         <label for='res_prix_total'>Prix_total</label>
