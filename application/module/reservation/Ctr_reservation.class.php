@@ -127,6 +127,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	function a_save()
 	{
 		if (isset($_POST["btSubmit"])) {
+			$_POST["res_prix_total"] = Reservation::calculPrixTotal($_POST["res_hotel"], "", "", $_POST["res_id"]);
 			$u = new Reservation();
 			$u->save($_POST);
 			if ($_POST["res_id"] == 0)

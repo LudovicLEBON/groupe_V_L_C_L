@@ -3,15 +3,15 @@
     <input type="hidden" name="res_id" id="res_id" value="<?= $id ?>" />
 
     <div class='form-group'>
-        <label for='res_date_maj'>Date_maj</label>
+        <label for='res_date_maj'>Date de maj</label>
         <input readonly id='res_date_maj' name='res_date_maj' type='datetime' size='50' value='<?= date("Y-m-d H:i") ?>' class='form-control' />
     </div>
     <div class='form-group'>
-        <label for='res_date_debut_sejour'>Date_debut_sejour</label>
+        <label for='res_date_debut_sejour'>Date de debut de sejour</label>
         <input id='res_date_debut_sejour' name='res_date_debut_sejour' type='date' size='50' value='<?= mhe($res_date_debut_sejour) ?>' class='form-control' />
     </div>
     <div class='form-group'>
-        <label for='res_date_fin_sejour'>Date_fin_sejour</label>
+        <label for='res_date_fin_sejour'>Date de fin de sejour</label>
         <input id='res_date_fin_sejour' name='res_date_fin_sejour' type='date' size='50' value='<?= mhe($res_date_fin_sejour) ?>' class='form-control' />
     </div>
     <div class='form-group'>

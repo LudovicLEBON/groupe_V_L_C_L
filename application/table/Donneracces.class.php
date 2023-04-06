@@ -124,9 +124,9 @@ class Donneracces extends Table
         </form>*/
 	static public function selectAllServReser($res_hotel, $res_id): array
 	{
-		$sql = "select * from donneracces,services,reservation,hotel,prestation 
-            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pre_hotel=hot_id and hot_id=:res_hotel
-            and res_id=:res_id order by ser_libelle";
+		$sql = "select * from donneracces,services,prestation 
+            where don_service=ser_id and don_reservation=:res_id and pre_hotel=:res_hotel 
+        	order by ser_libelle";
 
 		$stmt = Table::$link->prepare($sql);
 		$stmt->bindValue(":res_hotel", $res_hotel, PDO::PARAM_INT);
@@ -140,8 +140,8 @@ class Donneracces extends Table
 	{
 		$sql = "select * from services,prestation 
 		where pre_service=ser_id and pre_hotel=:hotel and ser_id not in 
-	   (select * from donneracces,prestation,services
-	   where don_reservation=:res_id and don_service=ser_id and ser_id=pre_service and pre_hotel=:hotel) 
+	   (select don_service from donneracces,prestation
+	   where don_reservation=:res_id and don_service=pre_service and pre_hotel=:hotel) 
 	   order by ser_libelle";
 
 		$stmt = Table::$link->prepare($sql);

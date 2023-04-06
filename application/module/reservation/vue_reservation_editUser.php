@@ -1,4 +1,4 @@
-<h2>Modification de la réservation</h2>
+<h2>Modification de ma réservation</h2>
 <form method="post" action="<?= hlien("reservation", "saveEditClient") ?>">
     <input type="hidden" name="res_id" id="res_id" value="<?= $id ?>" />
 
