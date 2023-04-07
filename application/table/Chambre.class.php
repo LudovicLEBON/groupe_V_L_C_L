@@ -52,4 +52,18 @@ class Chambre extends Table
 		}
 		return $s;
 	}
+
+	/**
+	 * fonction qui retourne la catégorie d'une chmbre passer en paramètre
+	 * 
+	 *@param integer $cha_id l'id de la chambre 
+	 */
+	static public function selectCategorie($cha_id): array
+	{
+		$sql = "select cha_categorie from chambre where cha_id=:cha_id";
+		$result = Table::$link->prepare($sql);
+		$result->bindValue(":cha_id", $cha_id, PDO::PARAM_INT);
+		$result->execute();
+		return $result->fetch();
+	}
 }
