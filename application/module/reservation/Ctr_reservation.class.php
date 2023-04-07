@@ -86,10 +86,9 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Reservation();
-		if ($id > 0)
-			$row = $u->select($id);
-		else
-			$row = $u->emptyRecord();
+
+		$row = $u->select($id);
+
 
 		extract($row);
 		require $this->gabarit;
@@ -100,10 +99,9 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Reservation();
-		if ($id > 0)
-			$row = $u->select($id);
-		else
-			$row = $u->emptyRecord();
+
+		$row = $u->select($id);
+
 
 		extract($row);
 		require $this->gabarit;
@@ -113,11 +111,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	function a_editUser()
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+
 		$u = new Reservation();
 		if ($id > 0)
 			$row = $u->select($id);
-		else
-			$row = $u->emptyRecord();
+
 
 		extract($row);
 		require $this->gabarit;
@@ -127,7 +125,14 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	function a_save()
 	{
 		if (isset($_POST["btSubmit"])) {
-			$_POST["res_prix_total"] = Reservation::calculPrixTotal($_POST["res_hotel"], "", "", $_POST["res_id"]);
+			$value = [];
+			$sta = Hotel::selectStanding($_POST["res_hotel"]);
+			foreach ($sta as $key) $value[] = $key;
+			$cat = Chambre::selectCategorie($_POST["res_chambre"]);
+			foreach ($cat as $keys) $value[] = $keys;
+			$_POST["res_date_maj"] = date("Y-m-d H:i");
+			$TTC = Reservation::calculPrixTotal($_POST["res_hotel"], $value[0], $value[1], $_POST["res_id"]);
+			foreach ($TTC as $prix) $_POST["res_prix_total"] = $prix;
 			$u = new Reservation();
 			$u->save($_POST);
 			if ($_POST["res_id"] == 0)
@@ -169,7 +174,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 			else
 				$_SESSION["message"][] = "L'enregistrement des modification de la réservation a bien été mis à jour.";
 		}
-		header("location:" . hlien("reservation", "indexUser"));
+		header("location:" . hlien("reservation", "indexUser", "id", $_SESSION["cli_id"]));
 	}
 
 	//$_POST des réservation créées par un client
@@ -188,7 +193,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 			else
 				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mis à jour.";
 		}
-		header("location:" . hlien("reservation", "indexUser"));
+		header("location:" . hlien("reservation", "indexUser", "id", $_SESSION["cli_id"]));
 	}
 
 

@@ -11,19 +11,11 @@
         <input id='res_date_fin_sejour' name='res_date_fin_sejour' type='date' size='50' value='<?= mhe($res_date_fin_sejour) ?>' class='form-control' />
     </div>
 
-    <div class='form-group'>
-        <label for='res_hotel'>Hotel</label>
-        <select readonly id='res_hotel' name='res_hotel' type="text" class='form-control'>
-            <?= Hotel::HTMLoptionsHotel(
-                "select * from hotel,standing 
-        where hot_standing=sta_id and hot_statut='ouvert'",
-                "hot_id",
-                "hot_nom",
-                "sta_libelle",
-                $res_hotel
-            ) ?>
-        </select>
-    </div>
+
+
+    <input type="hidden" id='res_hotel' name='res_hotel' class='form-control' value='<?= $res_hotel ?>'>
+
+
     <div class='form-group'>
         <label for='res_commende'>Listez vos critaires de la chambre (type de lit, taille, catégorie...)</label>
         <textarea id='res_commende' name='res_commende' rows="3" class='form-control'>

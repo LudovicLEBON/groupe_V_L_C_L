@@ -40,4 +40,18 @@ class Hotel extends Table
 		}
 		return $s;
 	}
+
+	/**
+	 * fonction qui retourne le standing d'un hôtel passer en paramètre
+	 * 
+	 *@param integer $hot_id l'id de la chambre 
+	 */
+	static public function selectStanding($hot_id): array
+	{
+		$sql = "select hot_standing from hotel where hot_id=:hot_id";
+		$result = Table::$link->prepare($sql);
+		$result->bindValue(":hot_id", $hot_id, PDO::PARAM_INT);
+		$result->execute();
+		return $result->fetch();
+	}
 }

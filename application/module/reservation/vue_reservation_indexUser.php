@@ -1,6 +1,5 @@
 <h2 class="text-center">Mes réservations </h2>
 <p><a class="btn btn-primary" href="<?= hlien("reservation", "creerClient", "id", 0) ?>">Nouvelle reservation</a></p>
-
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
@@ -13,6 +12,7 @@
             <th>Client</th>
             <th>Hotel</th>
             <th>Chambre</th>
+            <th>Recommendations</th>
             <th>Gérer les services</th>
             <th>Prix_total</th>
             <th>Etat</th>
@@ -22,6 +22,7 @@
     <tbody>
         <?php
         foreach ($data as $row) { ?>
+
             <tr>
 
                 <td><?= mhe($row['res_id']) ?></td>
@@ -32,6 +33,7 @@
                 <td><?= mhe($row['cli_login']) ?></td>
                 <td><?= mhe($row['hot_nom']) ?></td>
                 <td><?= mhe($row['cha_nom']) ?></td>
+                <td><?= mhe($row['res_commende']) ?></td>
                 <td><a class="btn btn-info" href="<?= hlien("donneracces", "editServReser", "hotel", $row["res_hotel"], "id", $row["res_id"]) ?>">Gestion</a></td>
                 <td><?= mhe($row['res_prix_total']) ?></td>
                 <td><?= mhe($row['res_etat']) ?></td>
