@@ -31,6 +31,7 @@
           <li><a class='nav-link' href='<?= hlien("categorie", "index") ?>'>Categorie</a></li>
           <li><a class='nav-link' href='<?= hlien("standing", "index") ?>'>Standing</a></li>
           <li><a class='nav-link' href='<?= hlien("profil", "index") ?>'>Profil</a></li>
+          <li><a class='nav-link' href='<?= hlien("individu", "indexPerso") ?>'>espace personnel</a></li>
         <?php } ?>
 
         <?php if (isset($_SESSION["ind_id"]) and $_SESSION["profil"] == 3) { ?>

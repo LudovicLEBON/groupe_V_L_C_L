@@ -69,7 +69,7 @@ o	res_état varchar(50)
 o	res_client (FK)
 o	res_hotel (FK)
 o	res_chambre (FK)
-res_commande (varchar 500)
+    res_commande (varchar 500)
 
 
 service
