@@ -15,8 +15,8 @@
         <p id='res_client' class='form-control'> <?= $cli["cli_login"] ?></p>
     </div>
     <div class='form-group'>
-        <label for='res_hotel'>Hotel</label>
-        <p id='res_hotel' class='form-control'>hotel <?= $res_hotel ?> </p>
+        <label for='res_hotel'>Hotel n°<?= $res_hotel ?> </label>
+        <input type="hidden" id='res_hotel' name='res_hotel' class='form-control' value='<?= $res_hotel ?>'>
     </div>
     <div class="form-group">
         <label for='res_commende'>Listez vos critaires de la chambre (type de lit, taille, catégorie...)</label>
@@ -39,7 +39,7 @@
         </select>
     </div>
     <div class='form-group'>
-        <label for='res_prix_total'>Prix total</label>
+        <label for='res_prix_total'>Prix_total</label>
         <input id='res_prix_total' name='res_prix_total' type="floor" step="0.01" min="0.01" size='50' value='<?= mhe($res_prix_total) ?>' class='form-control' />
     </div>
     <div class='form-group'>
