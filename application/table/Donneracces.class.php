@@ -114,22 +114,15 @@ class Donneracces extends Table
 		return $s;
 	}
 
-	/*<form method="post" action="<?= hlien("donneracces", "save") ?>">
-            <?=
-            Donneracces::HTML_checkbox("select * from donneracces,services,reservation,hotel,prestation 
-            where don_service=ser_id and don_reservation=res_id and res_hotel=hot_id and pre_hotel=hot_id and hot_id=" . $res_hotel . "
-            and res_id=" . $res_id . " order by ser_libelle", "ser_id", "ser_libelle", 0, "don_quantite", "don_id");
 
-            ?>
-        </form>*/
-	static public function selectAllServReser($res_hotel, $res_id): array
+	static public function selectAllServReser($res_id): array
 	{
-		$sql = "select * from donneracces,services,prestation 
-            where don_service=ser_id and don_reservation=:res_id and pre_hotel=:res_hotel 
+		$sql = "select * from donneracces,services 
+            where don_service=ser_id and don_reservation=:res_id 
         	order by ser_libelle";
 
 		$stmt = Table::$link->prepare($sql);
-		$stmt->bindValue(":res_hotel", $res_hotel, PDO::PARAM_INT);
+
 		$stmt->bindValue(":res_id", $res_id, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt->fetchAll();
@@ -140,8 +133,8 @@ class Donneracces extends Table
 	{
 		$sql = "select * from services,prestation 
 		where pre_service=ser_id and pre_hotel=:hotel and ser_id not in 
-	   (select don_service from donneracces,prestation
-	   where don_reservation=:res_id and don_service=pre_service and pre_hotel=:hotel) 
+	   (select don_service from donneracces
+	   where don_reservation=:res_id) 
 	   order by ser_libelle";
 
 		$stmt = Table::$link->prepare($sql);

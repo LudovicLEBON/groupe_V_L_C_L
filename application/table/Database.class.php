@@ -378,12 +378,16 @@ class Database
             $chambre = mt_rand(1, $cha[$y]);
             //génération des service lié à la réservations
             $donA = self::getServicesHotel($hot);
-            $prixS = 0;
+
             //----------------------------------------------------
             /*à modifier absolument pour regénérerla base de donné*/
             shuffle($donA);
-            foreach ($donA as $ligne) {
-                extract($ligne);
+            for ($w = 0; $w < 2; $w++)
+            //foreach ($donA as $ligne) 
+            {
+                $prixS = 0;
+                //extract($ligne);
+                extract($donA[$w]);
                 // print_r($link);
                 $q = mt_rand(1, 2);
                 $q = $q * $ts;
@@ -397,6 +401,7 @@ class Database
             '$pHT','$etat','$i','$hot','$chambre',' ')";
         }
         $sqlres = "insert into reservation values " . implode(',', $tabres);
+        echo $sqlres;
         Table::$link->query($sqlres);
         $message .= "<p>génération de $nbcl reservations</p>";
         //--------------------------------------------------------
@@ -404,6 +409,7 @@ class Database
 
 
         $sqldon = "insert into donnerAcces values " . implode(',', $tabd);
+        echo $sqldon;
 
         Table::$link->query($sqldon);
         $message .= "<p>génération des accès aux services</p>";

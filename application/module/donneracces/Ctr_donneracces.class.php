@@ -43,7 +43,7 @@ class Ctr_donneracces extends Ctr_controleur implements I_crud
 		$hotel = isset($_GET["hotel"]) ? $_GET["hotel"] : "";
 		$u = new Donneracces();
 		if ($id > 0)
-			$row = $u->selectAllServReser($hotel, $id);
+			$row = $u->selectAllServReser($id);
 		else
 			$row = $u->emptyRecord();
 

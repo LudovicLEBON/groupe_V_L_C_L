@@ -4,5 +4,6 @@
         <?php $row2 = Donneracces::selectAllServNoReser($hotel, $id);
 
         Donneracces::HTML_checkboxAjouter($row2, "ser_id", "ser_libelle", "don_service", "don_quantite", "don_quantite"); ?>
+        <pre><?= print_r($row2) ?></pre>
         <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
     </form>
