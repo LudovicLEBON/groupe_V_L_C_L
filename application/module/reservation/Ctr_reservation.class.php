@@ -174,7 +174,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 			else
 				$_SESSION["message"][] = "L'enregistrement des modification de la réservation a bien été mis à jour.";
 		}
-		header("location:" . hlien("reservation", "indexUser"));
+		header("location:" . hlien("reservation", "indexUser", "id", $_SESSION["cli_id"]));
 	}
 
 	//$_POST des réservation créées par un client
@@ -193,7 +193,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 			else
 				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mis à jour.";
 		}
-		header("location:" . hlien("reservation", "indexUser"));
+		header("location:" . hlien("reservation", "indexUser", "id", $_SESSION["cli_id"]));
 	}
 
 

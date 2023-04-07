@@ -75,7 +75,7 @@ class Reservation extends Table
 		$stmt = Table::$link->prepare($sql);
 		$stmt->bindValue(":hot_id", $hot_id, PDO::PARAM_INT);
 		$stmt->bindValue(":hot_standing", $hot_standing, PDO::PARAM_INT);
-		$stmt->bindValue(":hcha_categorie", $cha_categorie, PDO::PARAM_INT);
+		$stmt->bindValue(":cha_categorie", $cha_categorie, PDO::PARAM_INT);
 		$stmt->bindValue(":id", $id, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt->fetch();
