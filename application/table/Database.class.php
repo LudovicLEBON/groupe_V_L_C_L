@@ -125,7 +125,7 @@ class Database
             $tabsta[] = "(null,'$stand')";
         }
         $sql = "insert into standing values " . implode(",", $tabsta);
-        echo "$sql";
+        //echo "$sql";
         table::$link->query($sql);
         $message .= "<p>génération de $nbsta standing</p>";
 
@@ -382,13 +382,13 @@ class Database
             //----------------------------------------------------
             /*à modifier absolument pour regénérerla base de donné*/
             shuffle($donA);
-            for ($w = 0; $w < 2; $w++)
-            //foreach ($donA as $ligne) 
-            {
+            // for ($w = 0; $w < 2; $w++)
+            foreach ($donA as $ligne) {
                 $prixS = 0;
-                //extract($ligne);
-                extract($donA[$w]);
-                // print_r($link);
+                extract($ligne);
+                //extract($donA[$w]);
+                //print_r($donA[$w]);
+                //print_r($ligne);
                 $q = mt_rand(1, 2);
                 $q = $q * $ts;
                 $prixS = $prixS + $q * $pre_prix;
@@ -401,7 +401,7 @@ class Database
             '$pHT','$etat','$i','$hot','$chambre',' ')";
         }
         $sqlres = "insert into reservation values " . implode(',', $tabres);
-        echo $sqlres;
+        //echo $sqlres;
         Table::$link->query($sqlres);
         $message .= "<p>génération de $nbcl reservations</p>";
         //--------------------------------------------------------
@@ -409,7 +409,7 @@ class Database
 
 
         $sqldon = "insert into donnerAcces values " . implode(',', $tabd);
-        echo $sqldon;
+        //echo $sqldon;
 
         Table::$link->query($sqldon);
         $message .= "<p>génération des accès aux services</p>";
