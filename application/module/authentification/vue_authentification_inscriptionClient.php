@@ -1,4 +1,4 @@
-        <h2>Inscription</h2>
+<h3>Inscription</h3>
         <form method="post" onsubmit="return verification()">
             <div class='form-group'>
                 <label for='cli_nom'>Nom</label>

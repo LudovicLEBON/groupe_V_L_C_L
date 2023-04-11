@@ -4,11 +4,11 @@ body {
 
 .entete {
 	margin-top:100px;
-	background-color: rgb(31, 35, 38);
+	background-color: rgb(11, 12, 13);
 }
 
 h1 {
-	color: rgb(226, 192, 57);
+	color: rgb(231, 186, 5);
 	border-color: rgb(211, 130, 0);
 }
 
@@ -17,32 +17,49 @@ p {
 }
 
 h2 {
-	color: rgb(176, 143, 24);
+	color: rgb(232, 185, 15);
 }
 
 img.logo {
 	width:250px;
 }
 
+h3 {
+	color: goldenrod;
+}
+
 h4 {
 	text-align: center;
-	color: rgb(184, 149, 10);
+	color: rgb(235, 188, 0);
 }
 
 body {
-	background-color: rgb(75, 15, 15);
+	background-color: rgb(85, 41, 9);
+	color: rgb(255, 255, 255);
+	size: 10px;
 }
 
 
 table,form {
 	text-align: center;
 	margin: 75px;
-	background-color: rgb(144, 64, 64);
-	border: 3px solid rgb(118, 135, 143);
+	background-color: rgb(0, 0, 0);
+	border: 3px solid rgb(242, 204, 15);
     border-collapse: collapse;
     padding: 20px;
 }
 
 li {
 	color: rgb(227, 194, 8);
+}
+
+label {
+	color: rgb(246, 176, 0);
+}
+
+footer {
+	text-align: center;
+	background-color: rgb(11, 12, 13);
+	top: 20px;
+	height: 90px;
 }

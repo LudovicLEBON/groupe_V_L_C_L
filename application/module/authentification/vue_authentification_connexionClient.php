@@ -1,4 +1,4 @@
-        <h2>Connexion</h2>
+<h3>Connexion</h3>
         <form method="post">
             <div class='form-group'>
                 <label for='cli_login'>login</label>

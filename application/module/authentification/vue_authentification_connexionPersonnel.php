@@ -1,4 +1,4 @@
-        <h2>Connexion du Personnel</h2>
+<h3>Connexion du Personnel</h3>
         <form method="post">
             <div class='form-group'>
                 <label for='ind_login'>login</label>
