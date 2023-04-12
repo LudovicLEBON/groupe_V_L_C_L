@@ -34,14 +34,9 @@ h4 {
 }
 
 body {
-<<<<<<< HEAD
 	background-color: rgb(85, 41, 9);
 	color: rgb(255, 255, 255);
 	size: 10px;
-=======
-	background-color: rgb(75, 15, 15);
-	color: white;
->>>>>>> ce5ca5c1af72bfea79502dc7edcbb136c4953eb1
 }
 
 
@@ -52,6 +47,11 @@ table,form {
 	border: 3px solid rgb(242, 204, 15);
     border-collapse: collapse;
     padding: 20px;
+	color: white;
+}
+
+td,tr,th{
+	color: white;
 }
 
 li {
