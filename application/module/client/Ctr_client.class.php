@@ -22,8 +22,9 @@ class Ctr_client extends Ctr_controleur implements I_crud
 	}
 	function a_indexPerso()
 	{
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Client();
-		$data = $u->selectAllProf();
+		$data = $u->selectClientPerso($id);
 		require $this->gabarit;
 	}
 

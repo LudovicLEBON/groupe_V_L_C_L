@@ -35,4 +35,14 @@ class Client extends Table
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
+
+	public function selectClientPerso($cli_id): array
+	{
+		$sql = "select * from client,reservation,chambre,hotel 
+		 where cli_id=:id and  res_chambre=cha_id and hot_id=res_hotel and res_client=cli_id ";
+		$result = self::$link->prepare($sql);
+		$result->bindvalue(":id", $cli_id, PDO::PARAM_INT);
+		$result->execute();
+		return $result->fetchAll();
+	}
 }

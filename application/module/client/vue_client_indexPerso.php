@@ -24,9 +24,10 @@
                     <td><?= mhe($row['res_date_creation'])  ?> </td>
                     <td><?= mhe($row['res_date_debut_sejour'])  ?> </td>
                     <td><?= mhe($row['res_date_fin_sejour']) ?> </td>
-                    <td><?= mhe($row['res_hotel'])  ?> </td>
-                    <td><?= mhe($row['res_chambre'])  ?> </td>
-                    <td><?= mhe($row['res_prix_total'])  ?> </td>
+                    <td><?= mhe($row['hot_nom'])  ?> </td>
+                    <td><?= mhe($row['cha_nom'])  ?> </td>
+                    <td><?= mhe($row['res_prix_total'])?>€ </td>
+                    <td><?= mhe($row['res_etat'])  ?> </td>
                 </tr>
             <?php } ?>
         </tbody>
