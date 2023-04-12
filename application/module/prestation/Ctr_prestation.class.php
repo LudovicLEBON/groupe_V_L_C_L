@@ -16,7 +16,7 @@ class Ctr_prestation extends Ctr_controleur implements I_crud
 
 	function a_index()
 	{
-		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+		$id = isset($_GET["id"]) ? $_GET["id"] : "";
 		$u = new Prestation();
 		$row3 = $u->select($id);
 		$data = $u->selectPrestation();

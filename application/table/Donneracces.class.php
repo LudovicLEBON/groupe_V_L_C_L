@@ -57,12 +57,12 @@ class Donneracces extends Table
 		//echo "<pre>" . print_r($row) . "</pre>";
 		foreach ($row as $tab) {
 			extract($tab);
-			$sel = " checked ";
 
-			$s = $s . "<tbody><tr><td><input type='checkbox' name='$servAcc' id='$servAcc' $sel  value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label>
-			 </td><td><input type='number' name='$quantAcc' id='$quantAcc' size='5' value='$tab[$label2]'>
+
+			$s = $s . "<tbody><tr><td><input type='hidden' name='$servAcc' id='$servAcc'   value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label>
+			 </td><td><input type='number' name='$quantAcc' id='$quantAcc-$don_id' size='5' value='$tab[$label2]'>
 			</td>
-			<td><button class='btn submitServices btn-success' data-don_id='$don_id' data-don_res='$don_reservation' data-don_ser='$don_service' data-don_qtt='$don_quantite'>Modifier</button>
+			<td><button class='btn submitServices btn-success' data-don_id='$don_id' data-don_res='$don_reservation' data-don_ser='$don_service' data-don_qtt='$quantAcc-$don_id'>Modifier</button>
 			- <button class='btn deleteServices btn-danger' data-id='$don_id'>Suprimer</button></td>
 			</tr>";
 		}
@@ -92,6 +92,7 @@ class Donneracces extends Table
 				</thead>";
 		foreach ($row as $tab) {
 			print_r($tab[$pkserv]);
+			extract($tab);
 			if ($tab[$pkserv] == $servAcc)
 				$sel = "";
 			else
@@ -99,58 +100,61 @@ class Donneracces extends Table
 
 			$s = $s . "<tbody>
 					<tr>
-						<td><input type='checkbox' name='$servAcc' id='$servAcc' $sel value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label></td>
-						<td> <input type='number' name='$quantAcc' id='$quantAcc' size='5' value='$tab[$label2]'></td>
-						<td>" ?> <button class='btn submitServices btn-warning' data-id=0 data-don_ser='<?= $tab["ser_id"] ?>'>Modifier</button><?php "</td></tr>";
-																																			}
-																																			$s = $s . "</tbody><table>";
-																																			return $s;
-																																		}
+						<td>
+						<input type='checkbox' name='$servAcc' id='$servAcc' $sel value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label></td>
+						<td> <input type='number' name='$quantAcc' id='$quantAcc-$ser_id' size='5' value='$tab[$label2]'></td>
+						<td>
+						<button class='btn submitServices btn-warning' data-id=0 data-don_ser='$ser_id' data-don_quantite='$quantAcc-$ser_id'>Modifier</button>
+						</td>
+					</tr>";
+		}
+		$s = $s . "</tbody><table>";
+		return $s;
+	}
 
-																																		//faire une fonction selectAll pour les service lié à une réservation et un hotel donnée
+	//faire une fonction selectAll pour les service lié à une réservation et un hotel donnée
+	static public function HTMLli($sql, $pk, $label, $id)
+	{
+		$resultat = self::$link->query($sql);
+		$s = "";
+		foreach ($resultat as $tab) {
+			if ($tab[$pk] == $id)
+				$sel = " selected ";
+			else
+				$sel = "";
 
-																																		static public function HTMLli($sql, $pk, $label, $id)
-																																		{
-																																			$resultat = self::$link->query($sql);
-																																			$s = "";
-																																			foreach ($resultat as $tab) {
-																																				if ($tab[$pk] == $id)
-																																					$sel = " selected ";
-																																				else
-																																					$sel = "";
-
-																																				$s = $s . "<li $sel value='$tab[$pk]'>$tab[$label]</li>";
-																																			}
-																																			return $s;
-																																		}
+			$s = $s . "<li $sel value='$tab[$pk]'>$tab[$label]</li>";
+		}
+		return $s;
+	}
 
 
-																																		static public function selectAllServReser($res_id): array
-																																		{
-																																			$sql = "select * from donneracces,services 
-            where don_service=ser_id and don_reservation=:res_id 
-        	order by ser_libelle";
+	static public function selectAllServReser($res_id): array
+	{
+		$sql = "select * from donneracces,services 
+where don_service=ser_id and don_reservation=:res_id 
+order by ser_libelle";
 
-																																			$stmt = Table::$link->prepare($sql);
+		$stmt = Table::$link->prepare($sql);
 
-																																			$stmt->bindValue(":res_id", $res_id, PDO::PARAM_INT);
-																																			$stmt->execute();
-																																			return $stmt->fetchAll();
-																																		}
+		$stmt->bindValue(":res_id", $res_id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
 
-																																		//les service non réservé dans une réservation
-																																		static public function selectAllServNoReser($hotel, $res_id): array
-																																		{
-																																			$sql = "select * from services,prestation 
-		where pre_service=ser_id and pre_hotel=:hotel and ser_id not in 
-	   (select don_service from donneracces
-	   where don_reservation=:res_id) 
-	   order by ser_libelle";
+	//les service non réservé dans une réservation
+	static public function selectAllServNoReser($hotel, $res_id): array
+	{
+		$sql = "select * from services,prestation 
+where pre_service=ser_id and pre_hotel=:hotel and ser_id not in 
+(select don_service from donneracces
+where don_reservation=:res_id) 
+order by ser_libelle";
 
-																																			$stmt = Table::$link->prepare($sql);
-																																			$stmt->bindValue(":hotel", $hotel, PDO::PARAM_INT);
-																																			$stmt->bindValue(":res_id", $res_id, PDO::PARAM_INT);
-																																			$stmt->execute();
-																																			return $stmt->fetchAll();
-																																		}
-																																	}
+		$stmt = Table::$link->prepare($sql);
+		$stmt->bindValue(":hotel", $hotel, PDO::PARAM_INT);
+		$stmt->bindValue(":res_id", $res_id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+}

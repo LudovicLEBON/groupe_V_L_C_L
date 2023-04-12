@@ -12,10 +12,16 @@ function confSuppr(e) {
 
 //validation des modifications d'un service lié à une réservation
 let services = document.body.getElementsByClassName("submitServices");
-
-services.addEventListener("click", (e) => {
-  location.replace("__index.html");
-  hlien(
+//console.log(services);
+Array.prototype.forEach.call(services, function (element) {
+  element.addEventListener("click", (e) => {
+    console.log(e.target);
+    //console.log(e.dataset.don_qtt);
+    console.log(e.dataset.don_ser);
+    // let qtt = document.getElementById(e.dataset.don_qtt);
+    // console.log(qtt);
+    //location.replace("index.php?m=reservation&a=indexAdmin");
+    /*hlien(
     "donneracces",
     "save",
     "id",
@@ -26,13 +32,16 @@ services.addEventListener("click", (e) => {
     $don_service,
     "qtt",
     don_quantite
-  );
+  );*/
+  });
 });
 
 //supresssion d'un service lié à une réservation
 let supServices = document.body.getElementsByClassName("deleteServices");
-supServices.addEventListener("click", () => {
-  hlien("donneracces", "delete", "id", $don_id);
+Array.prototype.forEach.call(supServices, function (element) {
+  element.addEventListener("click", () => {
+    hlien("donneracces", "delete", "id", $don_id);
+  });
 });
 
 function filtrer_element() {
