@@ -29,7 +29,12 @@ h3 {
 }
 
 h4 {
-	text-align: center;
+	text-align: left;
+	color: rgb(235, 188, 0);
+}
+
+h5 {
+	text-align: left;
 	color: rgb(235, 188, 0);
 }
 
@@ -39,9 +44,8 @@ body {
 	size: 10px;
 }
 
-
 table,form {
-	text-align: center;
+	text-align: left;
 	margin: 75px;
 	background-color: rgb(0, 0, 0);
 	border: 3px solid rgb(242, 204, 15);

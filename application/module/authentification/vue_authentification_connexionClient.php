@@ -2,7 +2,7 @@
         <form method="post">
             <div class='form-group'>
                 <label for='cli_login'>login</label>
-                <input id='cli_login' name='cli_login' type='text' size='500' value='<?= mhe($cli_login) ?>' class='form-control' />
+                <input id='cli_login' name='cli_login' type='text' size='50' value='<?= mhe($cli_login) ?>' class='form-control' />
             </div>
 
             <div class='form-group'>
