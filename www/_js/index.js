@@ -15,36 +15,30 @@ let services = document.body.getElementsByClassName("submitServices");
 //console.log(services);
 Array.prototype.forEach.call(services, function (element) {
   element.addEventListener("click", (e) => {
-    console.log(e.target);
+    //console.log(e.target);
     //console.log(e.dataset.don_qtt);
-    console.log(e.dataset.don_ser);
-    // let qtt = document.getElementById(e.dataset.don_qtt);
-    // console.log(qtt);
-    //location.replace("index.php?m=reservation&a=indexAdmin");
-    /*hlien(
-    "donneracces",
-    "save",
-    "id",
-    $don_id,
-    "res",
-    $don_res,
-    "services",
-    $don_service,
-    "qtt",
-    don_quantite
-  );*/
+    //console.log(e.target.dataset.don_qtt);
+    let qtt = document.getElementById(e.target.dataset.don_qtt);
+    //console.log(qtt.value);
+    location.replace(
+      `index.php?m=donneracces&a=saveQtt&id=${e.target.dataset.don_id}&res=${e.target.dataset.don_res}&ser=${e.target.dataset.don_ser}&qtt=${qtt.value}&hotel=${e.target.dataset.hotel}`
+    );
   });
 });
 
 //supresssion d'un service lié à une réservation
 let supServices = document.body.getElementsByClassName("deleteServices");
 Array.prototype.forEach.call(supServices, function (element) {
-  element.addEventListener("click", () => {
-    hlien("donneracces", "delete", "id", $don_id);
+  element.addEventListener("click", (e) => {
+    console.log(e.target);
+    location.replace(
+      `index.php?m=donneracces&a=deleteServRes&id=${e.target.dataset.id}&res=${e.target.dataset.don_res}&hotel=${e.target.dataset.hotel}`
+    );
   });
 });
-
+/*
 function filtrer_element() {
   const btnsearch = document.body.getElementsByClassName("btsearch");
   btnsearch.addEventListener("click", (e) => {});
 }
+*/

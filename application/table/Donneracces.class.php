@@ -54,16 +54,16 @@ class Donneracces extends Table
 	{
 		$s = "<table class='table table-bordered'><thead><tr><th>Services</th><th>Quantités</th><th>Options</th></tr></thead>";
 		//echo "<pre>" . print_r($row) . "</pre>";
-		//echo "<pre>" . print_r($row) . "</pre>";
+		$hotel = $_GET["hotel"];
+
 		foreach ($row as $tab) {
 			extract($tab);
-
 
 			$s = $s . "<tbody><tr><td><input type='hidden' name='$servAcc' id='$servAcc'   value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label>
 			 </td><td><input type='number' name='$quantAcc' id='$quantAcc-$don_id' size='5' value='$tab[$label2]'>
 			</td>
-			<td><button class='btn submitServices btn-success' data-don_id='$don_id' data-don_res='$don_reservation' data-don_ser='$don_service' data-don_qtt='$quantAcc-$don_id'>Modifier</button>
-			- <button class='btn deleteServices btn-danger' data-id='$don_id'>Suprimer</button></td>
+			<td><button class='btn submitServices btn-success' data-don_id='$don_id' data-hotel='$hotel' data-don_res='$don_reservation' data-don_ser='$don_service' data-don_qtt='$quantAcc-$don_id'>Modifier</button>
+			- <button class='btn deleteServices btn-danger' data-id='$don_id' data-hotel='$hotel' data-don_res='$don_reservation'>Suprimer</button></td>
 			</tr>";
 		}
 		$s = $s . "</tbody>
@@ -85,26 +85,25 @@ class Donneracces extends Table
 	{
 		$s = "<table class='table table-bordered'>
 				<thead>
-					<tr>><th>Services</th>
+					<tr><th>Services</th>
 						<th>Quantités</th>
 						<th>Options</th>
 					</tr>
 				</thead>";
+
+		$hotel = $_GET["hotel"];
+		$id = $_GET["id"];
 		foreach ($row as $tab) {
 			print_r($tab[$pkserv]);
 			extract($tab);
-			if ($tab[$pkserv] == $servAcc)
-				$sel = "";
-			else
-				$sel = "checked";
 
 			$s = $s . "<tbody>
 					<tr>
 						<td>
-						<input type='checkbox' name='$servAcc' id='$servAcc' $sel value='$tab[$pkserv]'><label for='$servAcc'>$tab[$label]</label></td>
-						<td> <input type='number' name='$quantAcc' id='$quantAcc-$ser_id' size='5' value='$tab[$label2]'></td>
+						<input type='hidden' name='$servAcc' id='$servAcc' value='$ser_id'><label for='$servAcc'>$ser_libelle</label></td>
+						<td> <input type='number' name='$quantAcc' id='$quantAcc--$ser_id' size='5' value='0'></td>
 						<td>
-						<button class='btn submitServices btn-warning' data-id=0 data-don_ser='$ser_id' data-don_quantite='$quantAcc-$ser_id'>Modifier</button>
+						<button class='btn submitServices btn-warning' data-don_id='0' data-hotel='$hotel' data-don_res='$id' data-don_ser='$ser_id' data-don_qtt='$quantAcc--$ser_id'>Modifier</button>
 						</td>
 					</tr>";
 		}

@@ -44,8 +44,7 @@ class Ctr_donneracces extends Ctr_controleur implements I_crud
 		$u = new Donneracces();
 		if ($id > 0)
 			$row = $u->selectAllServReser($id);
-		else
-			$row = $u->emptyRecord();
+
 
 		extract($row);
 		require $this->gabarit;
@@ -65,7 +64,40 @@ class Ctr_donneracces extends Ctr_controleur implements I_crud
 		header("location:" . hlien("donneracces"));
 	}
 
+	//ajout ou modification de services à une réservation
+	function a_saveQtt()
+	{
 
+		if (isset($_GET["id"])) {
+			$_POST["don_id"] = $_GET["id"];
+			$u = new Donneracces();
+			$_POST["don_service"] = $_GET["ser"];
+			$u = new Donneracces();
+			$_POST["don_reservation"] = $_GET["res"];
+			$u = new Donneracces();
+			$_POST["don_quantite"] = $_GET["qtt"];
+			$u = new Donneracces();
+			$u->save($_POST);
+			if ($_POST["don_id"] == 0)
+				$_SESSION["message"][] = "Le nouvel enregistrement du service a bien été créé.";
+			else
+				$_SESSION["message"][] = "L'enregistrement du service a bien été mis à jour.";
+		}
+		header("location:" . hlien("donneracces", "editServReser", "hotel", $_GET['hotel'], "id", $_GET["res"]));
+	}
+
+
+
+	//Suprime une service lié à une réservation
+	function a_deleteServRes()
+	{
+		if (isset($_GET["id"])) {
+			$u = new Donneracces();
+			$u->delete($_GET["id"]);
+			$_SESSION["message"][] = "L'enregistrement de ce service a bien été supprimé.";
+		}
+		header("location:" . hlien("donneracces", "editServReser", "hotel", $_GET['hotel'], "id", $_GET["res"]));
+	}
 
 	//param GET id 
 	function a_delete()
