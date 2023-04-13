@@ -1,28 +1,34 @@
-    <h2>tarifer</h2>
-    <p><a class="btn btn-primary" href="<?= hlien("tarifer", "edit", "id", 0) ?>">Nouveau tarifer</a></p>
+    <h2>Consultation des tarifs d'une chambre dans nos hotels</h2>
+    <p>Pour modifier un tarif, il faut "tabuler" dans le tableau des tarifs et modifier la valeur de la case.
+    	La modification sera automatiquement faite en base de donnnées.</p>
+
     <table class="table table-striped table-bordered table-hover">
     	<thead>
     		<tr>
-
-    			<th>Id</th>
-    			<th>Standing</th>
-    			<th>Categorie</th>
-    			<th>Prix</th>
-    			<th>modifier</th>
-    			<th>supprimer</th>
+    			<th class="devise">€</th>
+    			<?php
+				foreach ($chCategorie as $catChambre) {
+					echo "<th>" . $catChambre . "</th>";
+				}
+				?>
     		</tr>
     	</thead>
     	<tbody>
+    		<!-- 
+		* Catégorie d'hôtel
+		* Prix de chaque chambre en fonction de la catégorie de la chambre/hôtel
+		-->
     		<?php
-			foreach ($data as $row) { ?>
+			foreach ($hoStanding as $numHoc => $nomHoc) {
+			?>
     			<tr>
-
-    				<td><?= mhe($row['tar_id']) ?></td>
-    				<td><?= mhe($row['sta_libelle']) ?></td>
-    				<td><?= mhe($row['cat_libelle']) ?></td>
-    				<td><?= mhe($row['tar_prix']) ?></td>
-    				<td><a class="btn btn-warning" href="<?= hlien("tarifer", "edit", "id", $row["tar_id"]) ?>">Modifier</a></td>
-    				<td><a class="btn btn-danger" href="<?= hlien("tarifer", "delete", "id", $row["tar_id"]) ?>">Supprimer</a></td>
+    				<th scope="col"><?= $nomHoc ?></th>
+    				<?php
+					foreach ($chCategorie as $numChc => $nomChc) {
+						$prix = $grilleTarifaire[$numHoc][$numChc];
+					?>
+    					<td class="tarif" numchc="<?= ($numChc + 1) ?>" numhoc="<?= ($numHoc + 1); ?>" contenteditable="true"><?= $prix ?></td>
+    				<?php } ?>
     			</tr>
     		<?php } ?>
     	</tbody>

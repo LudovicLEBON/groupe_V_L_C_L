@@ -36,6 +36,46 @@ Array.prototype.forEach.call(supServices, function (element) {
     );
   });
 });
+
+/**
+ * Gestion de l'information en JS des tarifs
+ * @param {*} e l'élément au click
+ */
+/*async function infoTarif(e) {
+  let tarPrix = e.target.innerHTML;
+  let tarHoStanding = e.target.getAttribute("numhoc");
+  let tarChCategorie = e.target.getAttribute("numchc");
+
+  editTar(tarHoStanding, tarChCategorie, tarPrix);
+}*/
+/**
+ * Permet l'édition d'un tarif en un click
+ * @param {intger} sta l'id du standing
+ * @param {integer} cat  l'id de la catégorie
+ * @param {number} tarprix
+ */
+/*async function editTar(sta, cat, tarprix) {
+  let tdEditionHeader = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    mode: "cors",
+    credentials: "same-origin",
+    body: JSON.stringify({
+      tar_standing: sta,
+      tar_categorie: cat,
+      tar_prix: tarprix,
+    }),
+  };
+
+  const texte = await fetch(
+    location.replace(`index.php?m=tarifer&a=ajax`),
+    tdEditionHeader
+  ).then((res) => res.text());
+
+  console.log(texte);
+}*/
 /*
 function filtrer_element() {
   const btnsearch = document.body.getElementsByClassName("btsearch");
