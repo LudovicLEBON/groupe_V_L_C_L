@@ -26,11 +26,13 @@
                     <td><?= mhe($row['res_date_fin_sejour']) ?> </td>
                     <td><?= mhe($row['hot_nom'])  ?> </td>
                     <td><?= mhe($row['cha_nom'])  ?> </td>
-                    <td><?= mhe($row['res_prix_total'])?>€ </td>
                     <td><?= mhe($row['res_etat'])  ?> </td>
+                    <td><?= mhe($row['res_prix_total']) ?>€ </td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
+
+    <a class=btn btn-reservation" href='<?= hlien("reservation", "indexUser", "id", $_SESSION["cli_id"]) ?>'>historique des reservations </a>
 
 </div>

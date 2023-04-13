@@ -49,7 +49,7 @@ class Ctr_prestation extends Ctr_controleur implements I_crud
 			else
 				$_SESSION["message"][] = "L'enregistrement Prestation a bien été mis à jour.";
 		}
-		header("location:" . hlien("prestation"));
+		header("location:" . hlien("prestation","index", "id", $_SESSION['hotel']));
 	}
 
 

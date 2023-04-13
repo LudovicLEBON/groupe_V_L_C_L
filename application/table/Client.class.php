@@ -39,7 +39,7 @@ class Client extends Table
 	public function selectClientPerso($cli_id): array
 	{
 		$sql = "select * from client,reservation,chambre,hotel 
-		 where cli_id=:id and  res_chambre=cha_id and hot_id=res_hotel and res_client=cli_id ";
+		 where cli_id=:id and  res_chambre=cha_id and hot_id=res_hotel and res_client=cli_id and res_etat='validée' ";
 		$result = self::$link->prepare($sql);
 		$result->bindvalue(":id", $cli_id, PDO::PARAM_INT);
 		$result->execute();
