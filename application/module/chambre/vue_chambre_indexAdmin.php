@@ -1,4 +1,5 @@
     <h2>chambre</h2>
+    
     <div class="formulaire">
     	<form method="post" class="row">
     		<p class="form_group col">
@@ -8,7 +9,7 @@
     		<p class="form_group col">
     			<label for="cha_categorie">Catégorie:</label>
     			<select id='cha_categorie' name='cha_categorie'>
-    				<?= Table::HTMLoptions("select * from categorie order by cat_libelle", "cat_id", "cat_libelle", $cha_categorie) ?>
+    				<?= Table::HTMLoptions("select * from categorie order by cat_libelle", "cat_id", "cat_libelle", 0) ?>
     			</select>
     		</p>
     		<p class="form-group col">
@@ -18,14 +19,14 @@
     		<p class="form-group col">
     			<Label for="cha_hotel">Hotel:</Label>
     			<select id='cha_hotel' name='cha_hotel'>
-    				<?= Table::HTMLoptions("select * from hotel order by hot_id", "hot_id", "hot_nom", $cha_hotel) ?>
+    				<?= Table::HTMLoptions("select * from hotel order by hot_id", "hot_id", "hot_nom", 0) ?>
     			</select>
     		</p>
     		<p class="form-group col">
     			<input type="submit" class="btsearch" value="rechercher">
     		</p>
 
-    	</form>
+    	</form> 
     </div>
     <p><a class="btn btn-primary" href="<?= hlien("chambre", "edit", "id", 0) ?>">Nouveau chambre</a></p>
     <table class="table table-striped table-bordered table-hover">
@@ -70,7 +71,7 @@
     				<td><?= mhe($row['cha_minibar']) ?></td>
     				<td><?= mhe($row['cha_coffre']) ?></td>
     				<td><?= mhe($row['cha_vue']) ?></td>
-    				<td><?= mhe($row['cha_categorie']) ?></td>
+    				<td><?= mhe($row['cat_libelle']) ?></td>
     				<td><?= mhe($row['cha_hotel']) ?></td>
     				<td><?= mhe($row['tar_prix']) ?></td>
     				<td><a class="btn btn-warning" href="<?= hlien("chambre", "edit", "id", $row["cha_id"]) ?>">Modifier</a></td>

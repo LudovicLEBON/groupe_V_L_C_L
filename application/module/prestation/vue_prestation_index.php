@@ -1,6 +1,6 @@
     <h2 class="text-center">prestation</h2>
 
-    
+
     <form method="post" action="<?= hlien("prestation", "save") ?>">
     	<h2 class="text-center">Ajouter une prestation</h2>
     	<input type="hidden" name="pre_id" id="pre_id" value=0 />
@@ -8,8 +8,8 @@
     	<div class='form-group'>
     		<label for='pre_service'>Service</label>
     		<select id='pre_service' name='pre_service' class='form-control'>
-    		<?php $hotel = $_GET["id"]; ?>
-			<?= Table::HTMLoptions("select * from prestation,services  
+    			<?php $hotel = $_GET["id"]; ?>
+    			<?= Table::HTMLoptions("select  * from prestation,services  
 		 where  pre_service=ser_id and ser_id not in (select pre_id from prestation where pre_hotel=$hotel) order by ser_libelle", "ser_id", "ser_libelle", $pre_service) ?>
     		</select>
 

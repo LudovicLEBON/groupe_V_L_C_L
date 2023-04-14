@@ -22,8 +22,9 @@ class Ctr_individu extends Ctr_controleur implements I_crud
 	}
 	function a_indexPerso()
 	{
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Individu();
-		$data = $u->selectAllProfHot();
+		$data = $u->selectResDuJour($id);
 		require $this->gabarit;
 	}
 

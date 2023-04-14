@@ -14,17 +14,19 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 		$this->$a();
 	}
 
-	function a_index()
+	 function a_index()
 	{
-		$u = new Chambre();
-		$data = $u->selectchambre();
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+		$u = new Chambre($id);
+		$data = $u->selectChambre($id);
 		require $this->gabarit;
-	}
+	} 
 
 	function a_indexAdmin()
 	{
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Chambre();
-		$data = $u->selectShort();
+		$data = $u->selectChambre($id);
 		require $this->gabarit;
 	}
 

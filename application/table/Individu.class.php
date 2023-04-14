@@ -35,4 +35,19 @@ class Individu extends Table
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
+
+
+	public function selectResDuJour($hotel): array
+	{
+		$date = date("Y-m-d");
+		$sql = "select * from reservation,chambre,hotel,client, individu  
+		where res_client=cli_id and res_hotel=hot_id and res_chambre=cha_id 
+		and res_date_debut_sejour<=:date and res_date_fin_sejour>=:date and res_hotel=:hotel
+		 order by res_date_fin_sejour";
+		$result = self::$link->prepare($sql);
+		$result->bindValue(":date", $date, PDO::PARAM_STR);
+		$result->bindValue(":hotel", $hotel, PDO::PARAM_STR);
+		$result->execute();
+		return $result->fetchAll();
+	}
 }

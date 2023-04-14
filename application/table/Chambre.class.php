@@ -10,11 +10,13 @@ class Chambre extends Table
 		parent::__construct("chambre", "cha_id");
 	}
 
-	public function selectChambre(): array
+	public function selectChambre($hot_id): array
 	{
 		$sql = "select * from chambre, categorie, hotel,tarifer, standing 
-		 where cha_categorie=cat_id and cha_hotel=hot_id and tar_standing=sta_id and tar_categorie ";
-		$result = self::$link->query($sql);
+		 where hot_id=:id and cha_categorie=cat_id and cha_hotel=hot_id and tar_standing=sta_id and tar_categorie ";
+		$result = self::$link->prepare($sql);
+		$result->bindValue(":id", $hot_id, PDO::PARAM_INT);
+		$result->execute();
 		return $result->fetchAll();
 	}
 
