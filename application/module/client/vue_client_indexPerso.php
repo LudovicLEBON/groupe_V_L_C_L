@@ -33,6 +33,6 @@
         </tbody>
     </table>
 
-    <a class=btn btn-reservation" href='<?= hlien("reservation", "indexUser", "id", $_SESSION["cli_id"]) ?>'>historique des reservations </a>
+    <a class="btn btn-info" href='<?= hlien("reservation", "indexUser", "id", $_SESSION["cli_id"]) ?>'>Historique des reservations </a>
 
 </div>
