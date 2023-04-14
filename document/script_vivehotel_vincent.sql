@@ -174,6 +174,73 @@ create table
 
 set foreign_key_checks = 1;
 
+-- les views
+
+drop view if exists CASERHOTEL;
+
+CREATE VIEW CASERHOTEL AS 
+	select
+	    hot_nom,
+	    sum(pre_prix * don_quantite) CAservices
+	from
+	    prestation,
+	    donnerAcces,
+	    hotel,
+	    reservation
+	where
+	    pre_service = don_service
+	    and pre_hotel = hot_id
+	    and don_reservation = res_id
+	    and res_etat = "validée"
+	group by hot_nom
+	order by CAservices
+DESC; 
+
+drop view if EXISTS CAHOTELIER;
+
+CREATE VIEW CAHOTELIER AS 
+	select
+	    hot_nom,
+	    sum(
+	        tar_prix * (
+	            res_date_fin_sejour - res_date_debut_sejour
+	        )
+	    ) CA
+	from
+	    reservation,
+	    hotel,
+	    tarifer,
+	    chambre
+	where
+	    res_hotel = hot_id
+	    and res_etat = "validée"
+	    and hot_standing = tar_standing
+	    and cha_categorie = tar_categorie
+	    and res_etat = "validée"
+	group by res_hotel
+	order by CA
+DESC; 
+
+drop view if EXISTS MAXCA;
+
+CREATE VIEW MAXCA AS 
+	select
+	    max(CAservices + CA) CAmax
+	from CASERHOTEL, CAHOTELIER
+	where
+	    CASERHOTEL.hot_nom = CAHOTELIER.hot_nom
+; 
+
+drop view if EXISTS CAGROUP;
+
+CREATE VIEW CAGROUP AS 
+	select
+	    sum(CAservices + CA) CAglobal
+	from CASERHOTEL, CAHOTELIER
+	where
+	    CASERHOTEL.hot_nom = CAHOTELIER.hot_nom
+; 
+
 -- contraintes
 
 alter table hotel

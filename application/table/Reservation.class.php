@@ -13,7 +13,8 @@ class Reservation extends Table
 	public function selectReservation(): array
 	{
 		$sql = "select * from hotel,reservation,chambre, client, standing, categorie 
-		 where res_hotel=hot_id and res_client=cli_id and res_chambre=cha_id and hot_standing=sta_id and cha_categorie=cat_id order by res_date_creation";
+		 where res_hotel=hot_id and res_client=cli_id and res_chambre=cha_id and hot_standing=sta_id 
+		 and cha_categorie=cat_id order by res_date_creation,res_etat";
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
@@ -40,7 +41,8 @@ class Reservation extends Table
 	static public function selectAllClient($cli_id): array
 	{
 		$sql = "select * from client,hotel,reservation,chambre,standing,categorie
-		where cli_id=res_client and res_client=:id and res_hotel=hot_id and hot_standing=sta_id and res_chambre=cha_id and cha_categorie=cat_id order by res_date_debut_sejour";
+		where cli_id=res_client and res_client=:id and res_hotel=hot_id and hot_standing=sta_id and res_chambre=cha_id and cha_categorie=cat_id
+		 order by res_date_debut_sejour,res_etat";
 
 		$stmt = Table::$link->prepare($sql);
 		$stmt->bindValue(":id", $cli_id, PDO::PARAM_INT);
@@ -60,14 +62,14 @@ class Reservation extends Table
 	static public function calculPrixTotal($hot_id, $hot_standing, $cha_categorie, $id): array
 	{
 		$sql = "
-		select (prixUnit+tar_prix) res_prix_total from reservation,
-			(select sum(don_quantite*nbjours*pre_prix) prixUnit from donneracces,prestation,
-				(select (res_date_fin_sejour-res_date_debut_sejour) nbjours from reservation 
-				where res_id=:id
-				) duree 
+		select (prixUnit+tarJour) res_prix_total from reservation,
+			(select sum(don_quantite*pre_prix) prixUnit from donneracces,prestation 
 			where don_service=pre_service and don_reservation=:id and pre_hotel=:hot_id 
 			) prixTotalServices,
-			(select tar_prix from tarifer 
+			(select (tar_prix*nbjours) tarJour from tarifer,
+			(select (res_date_fin_sejour-res_date_debut_sejour) nbjours from reservation 
+				where res_id=:id
+				) durees 
 			where tar_standing=:hot_standing and tar_categorie=:cha_categorie
 			) prixTarifer 
 		where res_id=:id 
@@ -90,7 +92,7 @@ class Reservation extends Table
 		$sql = "select * from reservation,chambre,hotel,client 
 		where res_client=cli_id and res_hotel=hot_id and res_chambre=cha_id 
 		and res_date_debut_sejour<=:date and res_date_fin_sejour>=:date and res_hotel=:hotel
-		 order by res_date_fin_sejour";
+		 order by res_date_fin_sejour,res_etat";
 		$result = self::$link->prepare($sql);
 		$result->bindValue(":date", $date, PDO::PARAM_STR);
 		$result->bindValue(":hotel", $hotel, PDO::PARAM_STR);
