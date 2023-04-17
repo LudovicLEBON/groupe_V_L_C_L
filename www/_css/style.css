@@ -52,7 +52,7 @@ table,form {
     border-collapse: collapse;
     padding: 20px;
 	color: white;
-	margin-left: -30%
+	
 }
 
 form {
@@ -81,4 +81,8 @@ footer {
 
 td,img {
 	margin-bottom: 0%;
+}
+
+td,th{
+	color: white;
 }
