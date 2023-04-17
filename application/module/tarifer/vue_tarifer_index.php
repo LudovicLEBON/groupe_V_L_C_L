@@ -1,4 +1,4 @@
-<h2>Consultation des tarifs d'une chambre dans nos hotels</h2>
+<h2>Les tarifs d'une chambre dans nos hêtels</h2>
 
 <table class="table table-striped table-bordered table-hover">
 	<thead>

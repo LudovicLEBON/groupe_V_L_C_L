@@ -122,7 +122,7 @@ create table
         res_etat varchar(100) not null,
         res_client int not null,
         res_hotel int not null,
-        res_chambre int not null,
+        res_chambre int,
         res_commende varchar(500)
     ) engine = innodb;
 
@@ -180,6 +180,7 @@ drop view if exists CASERHOTEL;
 
 CREATE VIEW CASERHOTEL AS 
 	select
+	    hot_id,
 	    hot_nom,
 	    sum(pre_prix * don_quantite) CAservices
 	from
@@ -200,12 +201,14 @@ drop view if EXISTS CAHOTELIER;
 
 CREATE VIEW CAHOTELIER AS 
 	select
+	    hot_id,
 	    hot_nom,
+	    count(res_chambre) nbChaRes,
 	    sum(
 	        tar_prix * (
 	            res_date_fin_sejour - res_date_debut_sejour
 	        )
-	    ) CA
+	    ) CAchambre
 	from
 	    reservation,
 	    hotel,
@@ -218,24 +221,43 @@ CREATE VIEW CAHOTELIER AS
 	    and cha_categorie = tar_categorie
 	    and res_etat = "validée"
 	group by res_hotel
-	order by CA
+	order by CAchambre
 DESC; 
 
 drop view if EXISTS MAXCA;
 
 CREATE VIEW MAXCA AS 
 	select
-	    max(CAservices + CA) CAmax
-	from CASERHOTEL, CAHOTELIER
+	    hotel.hot_nom,
+	    max(CAservices + CAchambre) CAmax
+	from
+	    hotel,
+	    CASERHOTEL,
+	    CAHOTELIER
 	where
-	    CASERHOTEL.hot_nom = CAHOTELIER.hot_nom
+	    hotel.hot_nom = CASERHOTEL.hot_nom
+	    and CASERHOTEL.hot_nom = CAHOTELIER.hot_nom
+; 
+
+drop view if EXISTS CATTCHOTEL;
+
+CREATE VIEW CATTCHOTEL AS 
+	select
+	    hotel.hot_nom, (CAservices + CAchambre) CATTC
+	from
+	    hotel,
+	    CASERHOTEL,
+	    CAHOTELIER
+	where
+	    hotel.hot_nom = CASERHOTEL.hot_nom
+	    and CASERHOTEL.hot_nom = CAHOTELIER.hot_nom
 ; 
 
 drop view if EXISTS CAGROUP;
 
 CREATE VIEW CAGROUP AS 
 	select
-	    sum(CAservices + CA) CAglobal
+	    sum(CAservices + CAchambre) CAglobal
 	from CASERHOTEL, CAHOTELIER
 	where
 	    CASERHOTEL.hot_nom = CAHOTELIER.hot_nom
