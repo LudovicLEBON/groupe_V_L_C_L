@@ -56,9 +56,11 @@ table,form {
 }
 
 form {
-	margin-top: -120%;
+	margin: 100px;
+	text-size-adjust: 100px;
+	/*margin-top: -120%;
 	margin-left: -80%;
-	margin-right: 10%;
+	margin-right: 10%;*/
 }
 
 li {

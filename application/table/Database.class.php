@@ -10,6 +10,7 @@ class Database
         return $sql;
     }
 
+    //retourne un tableau des services d'un hotel
     static public function getServicesHotel($id): array
     {
 
@@ -19,6 +20,26 @@ class Database
         $resultat->execute();
         return $resultat->fetchAll();
     }
+
+    /**
+     * retourne le tarif d'un chambre d'un hotel donnée
+     * @param integer $hotel l'id de l'hotel
+     * @param integer $chambre l'id de la chambre
+     */
+    static public function getTarif($hotel, $chambre): array
+    {
+        $sql = "select tar_prix from tarifer,
+        (select hot_standing from hotel where hot_id=:hotel) standing,
+        (select cha_categorie from chambre where cha_id=:chambre) categorie 
+        where tar_standing=hot_standing and tar_categorie=cha_categorie";
+        $resultat = Table::$link->prepare($sql);
+        $resultat->bindValue(":hotel", $hotel, PDO::PARAM_INT);
+        $resultat->bindValue(":chambre", $chambre, PDO::PARAM_INT);
+        $resultat->execute();
+        return $resultat->fetchAll();
+    }
+
+
 
 
 
@@ -382,16 +403,19 @@ class Database
             //----------------------------------------------------
             /*à modifier absolument pour regénérerla base de donné*/
             shuffle($donA);
-            // for ($w = 0; $w < 2; $w++)
+            // on parcour le tableau des service d'un hotel
+            $prixS = 0;
+            $tar = self::getTarif($y, $chambre);
+
             foreach ($donA as $ligne) {
-                $prixS = 0;
                 extract($ligne);
                 //extract($donA[$w]);
                 //print_r($donA[$w]);
                 //print_r($ligne);
                 $q = mt_rand(1, 2);
                 $q = $q * $ts;
-                $prixS = $prixS + $q * $pre_prix;
+                foreach ($tar as $ttar)  extract($ttar);
+                $prixS = $prixS + $q * $pre_prix + $ts * $tar_prix;
                 $tabd[] = "(null,'$i','$pre_service','$q')";
                 // print_r($tabd);
             }
