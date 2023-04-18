@@ -149,7 +149,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	{
 		if (isset($_POST["btSubmit"])) {
 			$_POST["res_date_maj"] = date("Y-m-d H:i");
-			$_POST["res_chambre"] = 0;
+			$_POST["res_chambre"] = null;
 			$u = new Reservation();
 			$u->save($_POST);
 			if ($_POST["res_id"] == 0)
@@ -183,7 +183,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		if (isset($_POST["btSubmit"])) {
 			$_POST["res_date_maj"] = date("Y-m-d H:i");
 			$_POST["res_client"] = $_SESSION["cli_id"];
-			$_POST["res_chambre"] = 0;
+			$_POST["res_chambre"] = null;
 			$_POST["res_prix_total"] = 0;
 			$_POST["res_etat"] = "initialisée";
 			$u = new Reservation();
