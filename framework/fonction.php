@@ -84,7 +84,13 @@ function afficheTableHTML($data)
 //si user non authentifié redirection vers index
 function checkAuth()
 {
-	if (!isset($_SESSION["cli_id"]) || !isset($_SESSION["ind_id"])) {
+	if (!isset($_SESSION["cli_id"])) {
+		$_SESSION["message"][] = "accès non autorisé. Veuillez vous connecter.";
+		header("location:" . hlien("_default"));
+		exit;
+	}
+
+	if (!isset($_SESSION["ind_id"])) {
 		$_SESSION["message"][] = "accès non autorisé. Veuillez vous connecter.";
 		header("location:" . hlien("_default"));
 		exit;

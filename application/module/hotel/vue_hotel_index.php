@@ -12,7 +12,7 @@
     				Adresse: <?= mhe($row['hot_adresse']) ?>
     			</p>
     			<p class="card">
-    				<img src="<?= mhe($row['hot_photo']) ?>" alt="">
+    				<img class="w-75 h-75" src="<?= mhe($row['hot_photo']) ?>" alt="photo de l'hôtel">
     			</p>
     			<p class="card">
     				Descriptif: <?= mhe($row['hot_descriptif']) ?>

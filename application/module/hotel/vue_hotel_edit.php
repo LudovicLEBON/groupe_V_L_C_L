@@ -31,7 +31,7 @@
         </div>
         <div class='form-group'>
             <label for='hot_statut'>Statut</label>
-            <?php $statut = ["libre", "travaux", "occupé"]; ?>
+            <?php $statut = ["ouvert", "complet", "travaux", "fermé"]; ?>
             <select id='hot_statut' name='hot_statut' class='form-control'>
                 <?php foreach ($statut as $key) {
                     $selected = ($key === $hot_statut) ? "selected" : ""; ?>
@@ -41,7 +41,7 @@
         </div>
         <div class='form-group'>
             <label for='hot_standing'>Standing</label>
-            <select id='hot_standing' name='hot_standing'>
+            <select id='hot_standing' name='hot_standing' class='form-control'>
                 <?= Table::HTMLoptions("select * from standing  order by sta_libelle", "sta_id", "sta_libelle", $hot_standing) ?>
             </select>
         </div>

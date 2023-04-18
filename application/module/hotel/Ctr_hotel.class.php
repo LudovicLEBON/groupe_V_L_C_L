@@ -68,7 +68,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 			else
 				$_SESSION["message"][] = "L'enregistrement Hotel a bien été mis à jour.";
 		}
-		header("location:" . hlien("hotel"));
+		header("location:" . hlien("hotel", "indexAdmin"));
 	}
 
 
@@ -81,6 +81,6 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 			$u->delete($_GET["id"]);
 			$_SESSION["message"][] = "L'enregistrement Hotel a bien été supprimé.";
 		}
-		header("location:" . hlien("hotel"));
+		header("location:" . hlien("hotel", "indexAdmin"));
 	}
 }

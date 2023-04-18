@@ -24,7 +24,7 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 
 	function a_indexAdmin()
 	{
-		
+
 		$u = new Chambre();
 		$data = $u->selectChambre($_SESSION['hotel']);
 		require $this->gabarit;
@@ -33,7 +33,7 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 	function a_indexModerator()
 	{
 		$u = new Chambre();
-		$data = $u->selectchambre();
+		$data = $u->selectchambre($_SESSION["hotel"]);
 		require $this->gabarit;
 	}
 
@@ -56,13 +56,19 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 	{
 		if (isset($_POST["btSubmit"])) {
 			$u = new Chambre();
+			$_POST["cha_jacuzzi"] = $_POST["cha_jacuzzi"] == "on" ? "1" : "0";
+			$_POST["cha_balcon"] = $_POST["cha_balcon"] == "on" ? "1" : "0";
+			$_POST["cha_coffre"] = $_POST["cha_coffre"] == "on" ? "1" : "0";
+			$_POST["cha_wifi"] = $_POST["cha_wifi"] == "on" ? "1" : "0";
+			$_POST["cha_minibar"] = $_POST["cha_minibar"] == "on" ? "1" : "0";
+			$_POST["cha_vue"] = $_POST["cha_vue"] == "on" ? "1" : "0";
 			$u->save($_POST);
 			if ($_POST["cha_id"] == 0)
 				$_SESSION["message"][] = "Le nouvel enregistrement Chambre a bien été créé.";
 			else
 				$_SESSION["message"][] = "L'enregistrement Chambre a bien été mis à jour.";
 		}
-		header("location:" . hlien("chambre"));
+		header("location:" . hlien("chambre", "indexAdmin"));
 	}
 
 
@@ -75,6 +81,6 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 			$u->delete($_GET["id"]);
 			$_SESSION["message"][] = "L'enregistrement Chambre a bien été supprimé.";
 		}
-		header("location:" . hlien("chambre"));
+		header("location:" . hlien("chambre", "indexAdmin"));
 	}
 }

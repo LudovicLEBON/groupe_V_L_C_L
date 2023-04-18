@@ -25,7 +25,7 @@
 
           <li><a class='nav-link' href='<?= hlien("client", "index") ?>'>Client</a></li>
           <li><a class='nav-link' href='<?= hlien("individu", "index") ?>'>Individu</a></li>
-          <li><a class='nav-link' href='<?= hlien("donneracces", "index") ?>'>Donneracces</a></li>
+
           <li><a class='nav-link' href='<?= hlien("prestation", "index", "id", $_SESSION['hotel']) ?>'>Prestation</a></li>
           <li><a class='nav-link' href='<?= hlien("services", "index") ?>'>Services</a></li>
           <li><a class='nav-link' href='<?= hlien("categorie", "index") ?>'>Categorie</a></li>
@@ -40,7 +40,7 @@
           <li><a class='nav-link' href='<?= hlien("hotel", "indexModerator") ?>'>Hotel</a></li>
           <li><a class='nav-link' href='<?= hlien("reservation", "indexModerator") ?>'>Reservation</a></li>
           <li><a class='nav-link' href='<?= hlien("tarifer", "indexModerator") ?>'>Tarifer</a></li>
-          <li><a class='nav-link' href='<?= hlien("donneracces", "index") ?>'>Donneracces</a></li>
+
         <?php } ?>
         <?php if (isset($_SESSION["cli_id"]) and $_SESSION["profil"] == 2) { ?>
           <li><a class='nav-link' href='<?= hlien("reservation", "indexUser", "id", $_SESSION["cli_id"]) ?>'>historique des reservations </a></li>

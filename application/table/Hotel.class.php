@@ -11,8 +11,8 @@ class Hotel extends Table
 	}
 	public function selectHotel(): array
 	{
-		$sql = "select * from hotel,standing, prestation, services
-		 where hot_standing=sta_id and pre_service=ser_id and pre_hotel=hot_id ";
+		$sql = "select * from hotel,standing
+		 where hot_standing=sta_id order by hot_id  ";
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
@@ -67,12 +67,45 @@ class Hotel extends Table
 		return $result->fetchAll();
 	}
 
+	public function selectCAHotelAll()
+	{
+		$sql = "select * from CAHOTELIER ";
+		$result = self::$link->query($sql);
+
+		return $result->fetchAll();
+	}
+
 	public function selectCAserv($hotel)
 	{
 		$sql = "select * from CASERHOTEL where hot_id=:hotel";
 		$result = self::$link->prepare($sql);
 		$result->bindValue(":hotel", $hotel, PDO::PARAM_INT);
 		$result->execute();
+		return $result->fetchAll();
+	}
+
+	public function selectCAservAll()
+	{
+		$sql = "select * from CASERHOTEL";
+		$result = self::$link->query($sql);
+
+		return $result->fetchAll();
+	}
+
+	public function selectCATTC($hotel)
+	{
+		$sql = "select * from CATTCHOTEL where hot_id=:hotel";
+		$result = self::$link->prepare($sql);
+		$result->bindValue(":hotel", $hotel, PDO::PARAM_INT);
+		$result->execute();
+		return $result->fetchAll();
+	}
+
+	public function selectCATTCAll()
+	{
+		$sql = "select * from CATTCHOTEL ";
+		$result = self::$link->query($sql);
+
 		return $result->fetchAll();
 	}
 

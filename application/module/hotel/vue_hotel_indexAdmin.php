@@ -25,6 +25,7 @@
 
 </div>
 
+<p><a class="btn btn-info" href="<?= hlien('hotel', 'stat') ?>">consulter les stats</a></p>
 <p><a class="btn btn-primary" href="<?= hlien("hotel", "edit", "id", 0) ?>">Nouveau hotel</a></p>
 <table class="table table-striped table-bordered table-hover">
 	<thead>
@@ -56,13 +57,13 @@
 				<td><?= mhe($row['hot_adresse']) ?></td>
 				<td><?= mhe($row['hot_longitude']) ?></td>
 				<td><?= mhe($row['hot_latitude']) ?></td>
-				<td><?= mhe($row['hot_photo']) ?></td>
+				<td><img class="w-75 h-75" src="<?= mhe($row['hot_photo']) ?>" alt="photo de l'hôtel"></td>
 				<td><?= mhe($row['hot_descriptif']) ?></td>
 				<td><?= mhe($row['hot_statut']) ?></td>
-				<td><?= mhe($row['hot_standing']) ?></td>
+				<td><?= mhe($row['sta_libelle']) ?></td>
 				<td>
-					<ul> <?= Prestation::HTMLli("select * from prestation,services,hotel
-				where pre_service=ser_id and pre_hotel=hot_id and hot_id=" . $row['hot_id'] . "  order by ser_libelle", "ser_id", "ser_libelle", $row['ser_libelle'])  ?></ul>
+					<ul> <?= Prestation::HTMLli("select * from prestation,services
+				where pre_service=ser_id and pre_hotel=" . $row['hot_id'] . "  order by ser_libelle", "ser_id", "ser_libelle", $row['hot_id'])  ?></ul>
 				</td>
 				<td><a class="btn btn-warning" href="<?= hlien("hotel", "edit", "id", $row["hot_id"]) ?>">Modifier</a></td>
 				<td><a class="btn btn-danger" href="<?= hlien("hotel", "delete", "id", $row["hot_id"]) ?>">Supprimer</a></td>
@@ -70,4 +71,3 @@
 		<?php } ?>
 	</tbody>
 </table>
-<p><a class="btn btn-primary" href="<?= hlien('hotel', 'stat') ?>">consulter les stats</a></p>

@@ -64,10 +64,10 @@
 
                 <td><?= mhe($row['cha_id']) ?></td>
                 <td><?= mhe($row['cha_nom']) ?></td>
-                <td><?= mhe($row['cha_photo']) ?></td>
+                <td><img class="w-75 h-75" src="<?= mhe($row['cha_photo']) ?>" alt="photo de la chambre"></td>
                 <td><?= mhe($row['cha_descriptif']) ?></td>
                 <td><?= mhe($row['cha_statut']) ?></td>
-                <td><?= mhe($row['cha_surface']) ?></td>
+                <td><?= mhe($row['cha_surface']) ?>m²</td>
                 <td><?= mhe($row['cha_type_lit']) ?></td>
                 <td><?= mhe($row['cha_jacuzzi']) ?></td>
                 <td><?= mhe($row['cha_balcon']) ?></td>
@@ -75,9 +75,9 @@
                 <td><?= mhe($row['cha_minibar']) ?></td>
                 <td><?= mhe($row['cha_coffre']) ?></td>
                 <td><?= mhe($row['cha_vue']) ?></td>
-                <td><?= mhe($row['cha_categorie']) ?></td>
-                <td><?= mhe($row['cha_hotel']) ?></td>
-                <td><?= mhe($row['tar_prix']) ?></td>
+                <td><?= mhe($row['cat_libelle']) ?></td>
+                <td><?= mhe($row['hot_nom']) ?></td>
+                <td><?= mhe($row['tar_prix']) ?> €</td>
             </tr>
         <?php } ?>
     </tbody>

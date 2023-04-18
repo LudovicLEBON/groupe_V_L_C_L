@@ -5,7 +5,7 @@
     foreach ($data as $row) { ?>
         <article class="artchambre">
             <h3 class="card"><?= mhe($row['cha_nom']) ?> </h3>
-            <img src="<?= mhe($row['cha_photo']) ?>" alt="" class="card">
+            <img class="w-75 h-75" src="<?= mhe($row['cha_photo']) ?>" alt="photo de la chambre" class="card">
             <p class="card">
                 Descriptif: <?= mhe($row['cha_descriptif']) ?>
             </p>

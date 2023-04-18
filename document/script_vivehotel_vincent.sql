@@ -243,6 +243,7 @@ drop view if EXISTS CATTCHOTEL;
 
 CREATE VIEW CATTCHOTEL AS 
 	select
+	    hotel.hot_id,
 	    hotel.hot_nom, (CAservices + CAchambre) CATTC
 	from
 	    hotel,
