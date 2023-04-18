@@ -54,4 +54,42 @@ class Hotel extends Table
 		$result->execute();
 		return $result->fetch();
 	}
+
+	/**
+	 * donne le CA d'un hotel donné
+	 */
+	public function selectCA($hotel)
+	{
+		$sql = "select * from CAHOTELIER where hot_id=:hotel";
+		$result = self::$link->prepare($sql);
+		$result->bindValue(":hotel", $hotel, PDO::PARAM_INT);
+		$result->execute();
+		return $result->fetchAll();
+	}
+
+	public function selectCAserv($hotel)
+	{
+		$sql = "select * from CASERHOTEL where hot_id=:hotel";
+		$result = self::$link->prepare($sql);
+		$result->bindValue(":hotel", $hotel, PDO::PARAM_INT);
+		$result->execute();
+		return $result->fetchAll();
+	}
+
+	public function selectCAgroupe()
+	{
+		$sql = "select * from CAGROUP";
+		$result = self::$link->query($sql);
+
+
+		return $result->fetchAll();
+	}
+
+	public function selectCAMax()
+	{
+		$sql = "select * from MAXCA ";
+		$result = self::$link->query($sql);
+
+		return $result->fetchAll();
+	}
 }

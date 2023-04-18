@@ -70,3 +70,4 @@
 		<?php } ?>
 	</tbody>
 </table>
+<p><a class="btn btn-primary" href="<?= hlien('hotel', 'stat') ?>">consulter les stats</a></p>

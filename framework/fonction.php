@@ -84,7 +84,7 @@ function afficheTableHTML($data)
 //si user non authentifié redirection vers index
 function checkAuth()
 {
-	if (!isset($_SESSION["uti_id"])) {
+	if (!isset($_SESSION["cli_id"]) || !isset($_SESSION["ind_id"])) {
 		$_SESSION["message"][] = "accès non autorisé. Veuillez vous connecter.";
 		header("location:" . hlien("_default"));
 		exit;
@@ -95,7 +95,7 @@ function checkAuth()
 function checkAllow($profil)
 {
 	checkAuth();
-	if ($_SESSION["uti_profil"] != $profil) {
+	if ($_SESSION["profil"] != $profil) {
 		$_SESSION["message"][] = "accès non autorisé.";
 		header("location:" . hlien("_default"));
 		exit;
@@ -124,6 +124,33 @@ function debug($t)
 	echo "<pre>";
 	print_r($t);
 	echo "</pre>";
+}
+
+function FormRecherche($className)
+{ ?>
+	<p>
+	<form method='post'>
+		<p>
+			<label for='rech_texte'>Rechercher <?= mhe(strtolower($className)) ?> :</label> <input type='text' name='rech_texte' value='' />
+		</p>
+		<label for="rech_champ">Crtière :</label>
+		<?php
+		foreach ($className::CRI_RECHERCHE as $name => $field) {
+			echo mhe($name) . " <input type='radio' name='rech_champ' value='" . mhe($field) . "' /> ";
+		}
+		?>
+		<input class="btn btn-success" type="submit" value="Enregistrer" /><br />
+		<input type="hidden" name="bt_submit" />
+
+	</form>
+	</p>
+<?php
+}
+
+function dateFr($date)
+{
+	$date = new DateTime($date);
+	return $date->format('d/m/Y');
 }
 
 /* 

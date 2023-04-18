@@ -76,9 +76,8 @@ async function editTar(sta, cat, tarprix) {
 
   console.log(texte);
 }
-/*
+
 function filtrer_element() {
   const btnsearch = document.body.getElementsByClassName("btsearch");
   btnsearch.addEventListener("click", (e) => {});
 }
-*/
