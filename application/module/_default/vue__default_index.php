@@ -43,36 +43,39 @@ if (isset($btsubmit)) {
 }
 ?>
 
-<h2>Bienvenue sur le site du groupe hôtelier ViveHotel !</h2>
-
-<div class="partners">
-    <td>
-    <img src="_images/Pullman.png" class="pull">
-    <img src="_images/Mercure_logo.jpg" class="mer">
-    <img src="_images/Ibis_Logo.png" class="ibs">
-    <img src="_images/Novotel_logo.jpg" class="nov">
-    <img src="_images/Sofitellogo.png" class="sof">
-    </td>
+<div class="container">><h2 class="text-center display-3 fs-3">Bienvenue sur le site du groupe hôtelier ViveHotel !</h2>
+    <div class="partners">
+        <td>
+            <img src="_images/Pullman.png" class="pull">
+            <img src="_images/Mercure_logo.jpg" class="mer">
+            <img src="_images/Ibis_Logo.png" class="ibs">
+            <img src="_images/Novotel_logo.jpg" class="nov">
+            <img src="_images/Sofitellogo.png" class="sof">
+        </td>
+    </div>
 </div>
 <br><br>
-
-<div class="form">
+<div class="container " style=" display:inline-block">
+    <div class="block img w-50"><img class="w-25 h-25" alt="carte de france" src="_images/France.jpg">
+        <h6 style="background-color:rgb(220, 188, 11)" style="color:white" class="w-25">50 hôtels répartis en France</h6>
+    </div>
+    <div class="form w-50 block">
         <!--Formulaire de réservation-->
         <form method="post">
             <h4 style="color:goldenrod">Réservez ici : </h4><br>
             <p><br>
-            <label for="city">ville : </label>
-            <select id="city" name="city">
-                <?php
-                foreach ($liste as $cle => $valeur) {
-                    if ($city == $cle)
-                        $selection = "selected";
-                    else
-                        $selection = "";
-                ?>
-                    <option <?= $selection ?> value="<?= $cle ?>"><?= $valeur ?></option>
-                <?php } ?>
-            </select>
+                <label for="city">ville : </label>
+                <select id="city" name="city">
+                    <?php
+                    foreach ($liste as $cle => $valeur) {
+                        if ($city == $cle)
+                            $selection = "selected";
+                        else
+                            $selection = "";
+                    ?>
+                        <option <?= $selection ?> value="<?= $cle ?>"><?= $valeur ?></option>
+                    <?php } ?>
+                </select>
             </p>
             <p>
                 <label for="datearrivee">Date d'arrivée : </label>
@@ -103,9 +106,10 @@ if (isset($btsubmit)) {
                 </p>
                 <h6 style=color:goldenrod>Remboursable jusqu'au jour d'arrivée, avant 18 heures.</h6>
             </form>
+    </div>
 </div>
 <br><br>
 
-<div>
+<div class="container">
     <img src="_images/services.jpg" class="services">
 </div>

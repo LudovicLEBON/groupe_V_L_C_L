@@ -6,6 +6,13 @@ class Prestation extends Table {
 	public function __construct() {
 		parent::__construct("prestation", "pre_id");
 	}
+	/**
+	 * fonction que permet de créer une lise des prestation associées à un hotel
+	 * @param string $sql la requette sql à exécuter
+	 * @param integer $pk l'id du champ à afficher
+	 * @param string $label le champ à afficher
+	 * @param integer $id le champ de la clé étangère qui reçoie la valeur
+	 */
 	static public function HTMLli($sql, $pk, $label, $id)
 	{
 		$resultat = self::$link->query($sql);
@@ -21,7 +28,7 @@ class Prestation extends Table {
 		return $s;
 	}
 
-
+//affiche les prestations
 	public function selectPrestation(): array
 	{
 		$sql = "select * from prestation, services, hotel 
@@ -46,4 +53,3 @@ class Prestation extends Table {
 
 	
 }
-?>

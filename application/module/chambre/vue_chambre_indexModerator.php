@@ -4,18 +4,18 @@
     <form method="post" class="row">
         <p class="form_group col">
             <label for="cha_nom">Nom:</label>
-            <input type="text" name="cha_nom" id="cha_nom" size="20">
+            <input type="text" name="cha_nom" id="cha_nom" size="20" class='form-control'>
         </p>
         <p class="form_group col">
             <label for="cha_categorie">Catégorie:</label>
-            <select id='cha_categorie' name='cha_categorie'>
+            <select id='cha_categorie' name='cha_categorie' class='form-control'>
                 <?= Table::HTMLoptions("select * from categorie order by cat_libelle", "cat_id", "cat_libelle", $cha_categorie) ?>
             </select>
         </p>
         <p class="form-group col">
             <label for="cha_statut">Statut </label>
             <?php $statut = ["libre", "travaux", "occupé"]; ?>
-            <select id='cha_statut' name='cha_statut' class='form-control'>
+            <select id='cha_statut' name='cha_statut' class='form-control' class='form-control'>
                 <?php foreach ($statut as $key) {
                     $selected = ($key === $cha_statut) ? "selected" : ""; ?>
                     <option value="<?= $key ?>" <?= $selected ?>><?= $key ?></option>
@@ -24,12 +24,12 @@
         </p>
         <p class="form-group col">
             <Label for="cha_hotel">Hotel:</Label>
-            <select id='cha_hotel' name='cha_hotel'>
+            <select id='cha_hotel' name='cha_hotel' class='form-control'>
                 <?= Table::HTMLoptions("select * from hotel order by hot_id", "hot_id", "hot_nom", $cha_hotel) ?>
             </select>
         </p>
         <p class="form-group col-3">
-            <input type="submit" class="btsearch" value="rechercher">
+            <input type="submit" class="btsearch btn btn-success" value="rechercher">
         </p>
     </form>
 </div>

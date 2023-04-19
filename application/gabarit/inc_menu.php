@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark fs-6">
   <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -56,10 +56,10 @@
             <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">déconnexion</a></li>
             <li><a class="nav-link"><?= $login ?></a></li>
           <?php } else { ?>
-            <li><a class="nav-link" href='<?= hlien("authentification", "connexionPersonnel") ?>'>Connexion du personnel</a></li>
+
             <li><a class="nav-link" href='<?= hlien("authentification", "connexionClient") ?>'>Connexion</a></li>
             <li><a class="nav-link" href='<?= hlien("authentification", "inscriptionClient") ?>'>Inscription</a></li>
-            <li><a class="nav-link" href='<?= hlien("authentification", "inscriptionPersonnel") ?>'>Inscription du personnel</a></li>
+
           <?php } ?>
         </ul>
     </div>

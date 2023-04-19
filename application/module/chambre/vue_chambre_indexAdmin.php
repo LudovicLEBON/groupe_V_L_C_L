@@ -2,29 +2,29 @@
 
 <div class="formulaire">
 	<form method="post" class="row">
-		<p class="form_group col">
+		<div class="form_group col">
 			<label for="cha_nom">Nom:</label>
-			<input type="text" name="cha_nom" id="cha_nom" size="25">
-		</p>
-		<p class="form_group col">
+			<input type="text" name="cha_nom" id="cha_nom" size="25" class='form-control'>
+		</div>
+		<div class="form_group col">
 			<label for="cha_categorie">Catégorie:</label>
-			<select id='cha_categorie' name='cha_categorie'>
+			<select id='cha_categorie' name='cha_categorie' class='form-control'>
 				<?= Table::HTMLoptions("select * from categorie order by cat_libelle", "cat_id", "cat_libelle", 0) ?>
 			</select>
-		</p>
-		<p class="form-group col">
+		</div>
+		<div class="form-group col">
 			<label for="cha_statut">Statut </label>
-			<input type="text" name="cha_statut" id="cha_statut" size="25">
-		</p>
-		<p class="form-group col">
+			<input type="text" name="cha_statut" id="cha_statut" size="25" class='form-control'>
+		</div>
+		<div class="form-group col">
 			<Label for="cha_hotel">Hotel:</Label>
-			<select id='cha_hotel' name='cha_hotel'>
+			<select id='cha_hotel' name='cha_hotel' class='form-control'>
 				<?= Table::HTMLoptions("select * from hotel order by hot_id", "hot_id", "hot_nom", 0) ?>
 			</select>
-		</p>
-		<p class="form-group col">
-			<input type="submit" class="btsearch" value="rechercher">
-		</p>
+		</div>
+		<div class="form-group col ">
+			<input type="submit" class="btsearch btn btn-success" value="rechercher">
+		</div>
 
 	</form>
 </div>
