@@ -43,7 +43,8 @@ if (isset($btsubmit)) {
 }
 ?>
 
-<div class="container">><h2 class="text-center display-3 fs-3">Bienvenue sur le site du groupe hôtelier ViveHotel !</h2>
+<div class="container"><br>
+    <h2 class="text-center display-3 fs-1">Bienvenue sur le site du groupe hôtelier ViveHotel !</h2>
     <div class="partners">
         <td>
             <img src="_images/Pullman.png" class="pull">
@@ -56,7 +57,7 @@ if (isset($btsubmit)) {
 </div>
 <br><br>
 <div class="container " style=" display:inline-block">
-    <div class="block img w-50"><img class="w-25 h-25" alt="carte de france" src="_images/France.jpg">
+    <div class="block img w-75"><img class="w-25 h-25" alt="carte de france" src="_images/France.jpg">
         <h6 style="background-color:rgb(220, 188, 11)" style="color:white" class="w-25">50 hôtels répartis en France</h6>
     </div>
     <div class="form w-50 block">

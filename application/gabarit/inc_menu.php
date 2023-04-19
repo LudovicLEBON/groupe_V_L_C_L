@@ -5,9 +5,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li><a class='nav-link' href='<?= hlien("database", "creer") ?>'>Créer database</a></li>
+        <!--  <li><a class='nav-link' href='<?= hlien("database", "creer") ?>'>Créer database</a></li>
         <li><a class='nav-link' href='<?= hlien("database", "dataset") ?>'>Dataset</a></li>
-
+-->
 
 
         <li class="nav-item">

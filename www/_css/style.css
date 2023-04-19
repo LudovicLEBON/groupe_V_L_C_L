@@ -34,22 +34,19 @@ div.partners {
 
 div.form ,.formulaire {
 	background-color: black;
-	font-size: smaller;
+	
 	border-color: goldenrod;
 	text-align: center;
 }
 
  table,td,tr,th {
 	background-color: black;
-	font-size: smaller;
+	
 	border-color: goldenrod;
 	text-align: center;
 	color: white;
 }
-td,th,tr{
-	width: 50%;
 
-}
 
 h3 {
 	color: goldenrod;
