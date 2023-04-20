@@ -45,7 +45,7 @@ if (isset($btsubmit)) {
 
 <div class="container"><br>
     <h2 class="text-center display-3 fs-1">Bienvenue sur le site du groupe hôtelier ViveHotel !</h2>
-    <div class="partners">
+    <div class="partners"><br><br>
         <td>
             <img src="_images/Pullman.png" class="pull">
             <img src="_images/Mercure_logo.jpg" class="mer">
@@ -55,14 +55,14 @@ if (isset($btsubmit)) {
         </td>
     </div>
 </div>
-<br><br>
-<div class="container " style=" display:inline-block">
-    <div class="block img w-75"><img class="w-25 h-25" alt="carte de france" src="_images/France.jpg">
-        <h6 style="background-color:rgb(220, 188, 11)" style="color:white" class="w-25">50 hôtels répartis en France</h6>
+<br><br><br>
+<div class="container" style="display:inline-block">
+    <div class="block img w-75"><img class="w-25 h-25" class="france" alt="carte de france" src="_images/France.jpg">
+        <h6 style="color:white" class="w-25">50 hôtels répartis en France</h6>
     </div>
     <div class="form w-50 block">
         <!--Formulaire de réservation-->
-        <form method="post">
+        <form method="post" class="accueil">
             <h4 style="color:goldenrod">Réservez ici : </h4><br>
             <p><br>
                 <label for="city">ville : </label>
@@ -111,6 +111,16 @@ if (isset($btsubmit)) {
 </div>
 <br><br>
 
+<div class="container"><br>
+    <div class="hotels">
+                <img src="_images/pullman.jpg" class="Pull" alt="Pullman">
+                <img src="_images/Mercure.jpg" class="Mer" alt="Mercure">
+                <img src="_images/Ibistyles.jpg" class="Ibs" alt="Ibis">
+                <img src="_images/Novotel.jpg" class="Nov" alt="Novotel">
+                <img src="_images/Sofitel.jpg" class="Sof" alt="Sofitel">
+    </div>
+</div>
+
 <div class="container">
-    <img src="_images/services.jpg" class="services">
+    <img src="_images/services.jpg" class="services" alt="services" style="margin-top: -17%;">
 </div>

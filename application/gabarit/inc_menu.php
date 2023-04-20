@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark fs-6">
   <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -5,9 +15,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!--  <li><a class='nav-link' href='<?= hlien("database", "creer") ?>'>Créer database</a></li>
-        <li><a class='nav-link' href='<?= hlien("database", "dataset") ?>'>Dataset</a></li>
--->
+        <!--<li><a class='nav-link' href='<?= hlien("database", "creer") ?>'>Créer database</a></li>
+        <li><a class='nav-link' href='<?= hlien("database", "dataset") ?>'>Dataset</a></li>!-->
 
 
         <li class="nav-item">
