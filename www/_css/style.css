@@ -1,10 +1,15 @@
 body {
-	margin-top:0px;
+	margin-top: 0px;
 }
 
 .entete {
-	margin-top:100px;
+	margin-top: 100px;
 	background-color: rgb(27, 29, 31);
+	border: 1px solid rgb(255, 204, 0);
+}
+
+.france {
+	margin-left: -20%;
 }
 
 h1 {
@@ -21,32 +26,56 @@ h2 {
 }
 
 img.logo {
-	width:250px;
+	width: 250px;
 }
 
-img.pull,.mer,.ibs,.nov,.sof {
+img.pull,
+.mer,
+.ibs,
+.nov,
+.sof {
 	width: 120px;
 }
 
-div.partners {
-	text-align:end;
-}
-
-div.form ,.formulaire {
-	background-color: black;
-	
-	border-color: goldenrod;
+.partners {
 	text-align: center;
 }
 
- table,td,tr,th {
+.accueil {
 	background-color: black;
-	
+	text-align: center;
+	margin-left: 40%;
+	margin-right: -15%;
+	margin-top: -37%;
+}
+
+.Pull,
+.Mer,
+.Ibs,
+.Nov,
+.Sof {
+	width: 250px;
+	margin-left: 63%;
+	margin-top: -41%;
+	border-collapse: collapse;
+	border-color: goldenrod;
+}
+
+table,
+td,
+tr,
+th {
+	background-color: black;
 	border-color: goldenrod;
 	text-align: center;
 	color: white;
 }
 
+.accueil {
+	border: 1px solid rgb(255, 204, 0);
+	padding: auto;
+	margin-right: -15%;
+}
 
 h3 {
 	color: goldenrod;
@@ -77,4 +106,29 @@ footer {
 	background-color: rgb(11, 12, 13);
 	top: 20px;
 	height: 90px;
+}
+
+.services {
+	size: 3%;
+	width: 790px;
+}
+
+.formulaire {
+	background-color: black;
+}
+
+.Pull {
+	margin-top: -90%;
+}
+.Mer {
+	margin-top: -65%;
+}
+.Ibs {
+	margin-top: -40%;
+}
+.Nov {
+	margin-top: -12%;
+}
+.Sof {
+	margin-top: -10%;
 }
